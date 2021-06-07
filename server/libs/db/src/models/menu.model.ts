@@ -17,7 +17,7 @@ class Meta {
 })
 export class Menu {
   _id?: string
-  @ApiProperty({ description: 'id', example: 'id' })
+  @ApiProperty({ description: '路径', example: '/index' })
   @prop()
   path: string
 
@@ -28,6 +28,7 @@ export class Menu {
   @ApiProperty({ description: '组件路径', example: '/home/index' })
   @prop()
   component: string
+
   @ApiProperty({ description: 'meta' })
   @prop({ _id: false })
   meta: Meta

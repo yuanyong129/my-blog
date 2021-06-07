@@ -7,6 +7,7 @@ import { MenusModule } from './menus/menus.module'
 import { RolesModule } from './roles/roles.module'
 import { AuthModule } from './auth/auth.module'
 import { CommonModule } from '@libs/common'
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CommonModule } from '@libs/common'
     RolesModule,
     AuthModule,
     CommonModule,
+    PostModule,
   ],
   controllers: [AppController],
   providers: [AppService],

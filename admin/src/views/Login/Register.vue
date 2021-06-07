@@ -47,7 +47,7 @@ export default {
 .login-wrap{
   width: 100vw;
   height: 100vh;
-  background: url('../../static/imgs/bg.jpg') no-repeat center center;
+  background: url('~@/assets/bg.jpg') no-repeat center center;
   background-size: 100% 100%;
   justify-content: center;
   align-items: center;

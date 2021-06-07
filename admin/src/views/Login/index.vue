@@ -1,7 +1,7 @@
 <template>
   <div class="login-wrap flex-row">
     <div class="form">
-      <div class="title text-white">管理模板</div>
+      <div class="title text-white">空澄的个人空间管理端</div>
       <el-form>
         <el-form-item label="用户名">
           <el-input v-model="form.username" prefix-icon="el-icon-user" placeholder="请输入用户名"></el-input>
@@ -46,7 +46,7 @@ export default {
 .login-wrap{
   width: 100vw;
   height: 100vh;
-  background: url('../../static/imgs/bg.jpg') no-repeat center center;
+  background: url('~@/assets/bg.jpg') no-repeat center center;
   background-size: 100% 100%;
   justify-content: center;
   align-items: center;

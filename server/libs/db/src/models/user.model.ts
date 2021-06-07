@@ -49,6 +49,7 @@ export class User {
   })
   @prop()
   gender: number
+
   @ApiProperty({ description: '角色id', example: '' })
   @prop({
     ref: Role,

@@ -67,19 +67,26 @@ export class AuthController {
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
   async getMenu(@Req() { user }) {
-    const { menuId } = await this.roleModel.findOne({
-      _id: String(user.roleId),
-    })
-    const menuList = await this.menuModel.find({ pid: '0' }).populate({
-      path: 'children',
-      populate: {
+    if (user.roleId) {
+      const { menuId } = await this.roleModel.findOne({
+        _id: String(user.roleId),
+      })
+      const menuList = await this.menuModel.find({ pid: '0' }).populate({
         path: 'children',
-      },
-    })
-    const data = this.authService.createPremissonMenu(menuList, menuId)
-    return {
-      state: 200,
-      data,
+        populate: {
+          path: 'children',
+        },
+      })
+      const data = this.authService.createPremissonMenu(menuList, menuId)
+      return {
+        state: 200,
+        data,
+      }
+    } else {
+      return {
+        state: 200,
+        data: [],
+      }
     }
   }
 }

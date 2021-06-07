@@ -3,7 +3,7 @@ import Vue from 'vue'
 import { Message } from 'element-ui'
 import { getToken } from './auth'
 
-const ip = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_URl :  'http://localhost:3000/frame/'
+const ip = process.env.NODE_ENV === 'production' ? process.env.VUE_APP_BASE_URl :  'http://localhost:3080/blog/'
 const http = axios.create({
   baseURL: ip,
   timeout: 3000

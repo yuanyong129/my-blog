@@ -31,6 +31,20 @@ export const constantRoutes = [
     ]
   },
   {
+    path: '/post',
+    component: Layout,
+    redirect: 'post/index',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/Post'),
+        meta: {
+          title: '帖子管理'
+        }
+      }
+    ]
+  },
+  {
     path: '/user',
     component: Layout,
     redirect: '/user/index',

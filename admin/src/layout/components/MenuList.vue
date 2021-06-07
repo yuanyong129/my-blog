@@ -14,6 +14,13 @@
       </template>
       <el-menu-item index="/index">主页</el-menu-item>
     </el-submenu>
+    <el-submenu index="3">
+      <template slot="title">
+        <i class="el-icon-location"></i>
+        <span>帖子中心</span>
+      </template>
+      <el-menu-item index="/post/index">帖子管理</el-menu-item>
+    </el-submenu>
     <el-submenu index="2">
       <template slot="title">
         <i class="el-icon-menu"></i>

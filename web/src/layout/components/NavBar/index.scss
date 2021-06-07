@@ -1,11 +1,12 @@
-[data-component="NavBar"]{
+[data-component="navbar"]{
+  height: 64px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(18px);
   .nav-bar{
     justify-content: space-between;
   }
-  .user-info{
-    margin-right: 20px;
-    .log-out{
-      cursor: pointer;
-    }
+  .my-link{
+    color: rgb(121, 85, 72);
+    padding: 0 20px;
   }
 }

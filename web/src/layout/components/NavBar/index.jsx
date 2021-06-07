@@ -1,28 +1,21 @@
 import React, { Component } from 'react'
 import { Space } from 'antd'
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-} from '@ant-design/icons'
-import { getUsername } from '@/utils/auth'
+import { NavLink } from 'react-router-dom'
+import Logo from '../Logo'
 import './index.scss'
 
 export default class NavBar extends Component {
-  state = {
-    username: getUsername()
-  }
   render() {
     return (
-      <div data-component="NavBar">
-        <div className="nav-bar flex-row">
-          {React.createElement(this.props.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: this.props.onToggle
-          })}
-          
-          <Space className="user-info">
-            <div className="welcome"> {this.state.username}，欢迎登录！ </div>
-            <div className="log-out" onClick={this.props.onLogout}>退出登录</div>
+      <div data-component="navbar">
+        <div className="nav-bar">
+          <Space>
+            <Logo />
+            <NavLink className="my-link" to="/" > 首页 </NavLink>
+            <NavLink className="my-link" to="/blog" > 我的博客 </NavLink>
+            <NavLink className="my-link" to="/novel" > 我的小说 </NavLink>
+            <NavLink className="my-link" to="/novel" > 我的折纸 </NavLink>
+            <NavLink className="my-link" to="/about" > 关于 </NavLink>
           </Space>
         </div>
       </div>

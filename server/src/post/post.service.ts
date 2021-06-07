@@ -16,6 +16,7 @@ export class PostService {
       .find({ title: new RegExp(`${title}`) })
       .skip((page - 1) * size)
       .limit(size)
+      .sort({ createdAt: -1 })
   }
   // 添加帖子
   async addPost(post: Post) {

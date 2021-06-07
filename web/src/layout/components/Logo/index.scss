@@ -1,11 +1,10 @@
 [data-component="logo"]{
-  .logo {
-    height: 32px;
-    margin: 16px;
-    overflow: hidden;
-    background: #dedede;
-  }
-  .logo-img{
-    height: 32px;
-  }
+  height: 100%;
+  line-height: 64px;
+  background-color: #28B9BE;
+  padding: 0 20px;
+  font-size: 24px;
+  font-weight: 700;
+  color: white;
+  box-sizing: border-box;
 }

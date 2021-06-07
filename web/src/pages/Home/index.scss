@@ -1,0 +1,56 @@
+[data-component="home"]{
+  .up{
+    width: 100%;
+    text-align: center;
+    margin: 50px 0 0;
+    .avatar{
+      width: 100px;
+      height: 100px;
+      background-color: white;
+      border-radius: 50%;
+      vertical-align: bottom;
+    }
+    .my-intro{
+      display: inline-block;
+      color: white;
+      padding-left: 20px;
+      font-size: 30px;
+      .intro{
+        font-size: 16px;
+      }
+    }
+  }
+
+  .new-blog, .new-novel{
+    width: 40%;
+    margin: 50px auto 0;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: rgba(255,240,245, .5);
+    backdrop-filter: blur(18px);
+    @media screen and (max-width: 1280px) {
+      width: 55%;
+    }
+    @media screen and (max-width: 720px) {
+      width: 70%;
+    }
+    .title{
+      width: 100%;
+      font-size: 18px;
+      color: crimson;
+      justify-content: space-between;
+      font-weight: 700;
+      align-items: center;
+    }
+    .content{
+      color: whitesmoke;
+    }
+  }
+
+  .new-novel{
+    .title{
+      color: #bfc;
+    }
+  }
+}

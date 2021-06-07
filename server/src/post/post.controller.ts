@@ -27,7 +27,11 @@ export class PostController {
   async getPosts(@Query() { title, page, size }) {
     // 获取所有帖子
     try {
-      const data = await this.postService.getAllPosts(title, page, size)
+      const data = await this.postService.getAllPosts(
+        title,
+        parseInt(page),
+        parseInt(size),
+      )
       return {
         state: 200,
         message: '成功！',

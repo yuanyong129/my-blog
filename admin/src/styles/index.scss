@@ -1,0 +1,49 @@
+@import './mixin.scss';
+@import './variable.scss';
+@import './element.scss';
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+/* 布局样式 */
+
+body {
+  width: 100%;
+  height: 100%;
+  font-size: medium;
+  overflow: hidden;
+}
+
+.flex-row{
+  display: flex;
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+.el-main{
+  height: calc(100vh - #{$headerHeight} - #{$footHeight});
+  @include noScrollBar();
+}
+
+.text-white{
+  color: white;
+}
+
+.box-shadow{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04)
+}
+.grid-form {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.option-area{
+  padding: 20px 20px 0;
+  justify-content: space-between;
+  .left{
+    align-items: center;
+  }
+}

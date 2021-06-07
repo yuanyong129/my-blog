@@ -1,0 +1,38 @@
+import axios from 'axios'
+import { message as Message } from 'antd'
+import { getToken } from './auth'
+
+const ip = 'http://localhost:3000/frame/'
+const http = axios.create({
+  baseURL: ip,
+  timeout: 3000
+})
+// 请求拦截器
+http.interceptors.request.use(
+  req => {
+    if (req.url.indexOf('login') < 0 && req.url.indexOf('register') < 0) {
+      req.headers['Authorization'] = `Bearer ${getToken()}`
+    }
+    return req
+  },
+  err => {
+    console.log('req err', err)
+  }
+)
+// 响应拦截器
+http.interceptors.response.use(
+  res => {
+    if (res.data.state !== 200) {
+      Message.error(res.data.message)
+    } else {
+      return res.data
+    }
+  },
+  err => {
+    const { message } = err.response.data
+    Message.error(message)
+    // console.log(message)
+  }
+)
+
+export default http

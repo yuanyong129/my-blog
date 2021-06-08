@@ -48,24 +48,17 @@
     .title{
       width: 100%;
       font-size: 18px;
-      color: crimson;
+      color: #F09DC1;
       justify-content: space-between;
       font-weight: 700;
       align-items: center;
     }
     .content{
-      color: skyblue;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      color: rgb(245, 245, 245);
       font-size: 16px;
       font-family: '等线';
-    }
-    .post-wrap{
-      justify-content: space-between;
-      padding: 5px 15px;
-      &:hover{
-        background-color: rgb(253, 212, 225);
-        border-radius: 6px;
-        cursor: pointer;
-      }
     }
   }
 

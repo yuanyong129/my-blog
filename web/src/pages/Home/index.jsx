@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+// import { Tag } from 'antd'
 import {
   EditFilled,
   BookFilled,
   RightCircleFilled,
 } from '@ant-design/icons'
+import Card from './components/Card'
 import dayjs from 'dayjs'
 import Avatar from '@/assets/images/avatar.png'
 import { getPosts } from '@/api'
@@ -46,10 +48,12 @@ export default class Home extends Component {
           <div className="content">
             {
               this.state.posts.map(post => (
-                <div className="post-wrap flex-row" key={post._id}>
-                  <div>{ post.title }</div>
-                  <div style={{display: 'inline-block'}}>{ dayjs(post.createdAt).format('YYYY-MM-DD')}</div>
-                </div>
+                <Card
+                  key={post._id}
+                  title={post.title}
+                  tags={post.tags}
+                  type={post.type? post.type.title: null}
+                  createdAt={dayjs(post.createdAt).format('YYYY-MM-DD')} />
               ))
             }
           </div>

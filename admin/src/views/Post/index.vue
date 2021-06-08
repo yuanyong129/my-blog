@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import { getPost, updPost, delPost, addPost, getParam } from '@/api'
+import { getPost, updPost, delPost, addPost, getParam, getPostById } from '@/api'
 import { mavonEditor } from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
 export default {
@@ -78,18 +78,12 @@ export default {
         page: 1,
         size: 10
       },
-      tableData: [
-        {
-          name: '张三',
-          age: 12
-        },
-        {
-          name: '李四',
-          age: 16
-        }
-      ],
+      tableData: [],
       tableColumns: [
         { label: '标题', prop: 'title' },
+        { label: '分类', render: ({ type }) => {
+          return type ? type.title : ''
+        }},
         { label: '内容', prop: 'content' }
       ],
       tableOptions: {
@@ -145,10 +139,11 @@ export default {
       this.form = {}
     },
     // 修改表单初始化
-    updDefault(row) {
+    async updDefault({ _id }) {
       this.formVisible = true
       this.formOptions = this.$setForm('UPD')
-      this.form = { ...row }
+      const { data } = await getPostById(_id)
+      this.form = data
     },
     // 添加
     async add() {

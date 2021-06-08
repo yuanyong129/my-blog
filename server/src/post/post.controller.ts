@@ -70,6 +70,21 @@ export class PostController {
     }
   }
 
+  @Get(':id')
+  @ApiParam({
+    description: '帖子id',
+    name: 'id',
+  })
+  @ApiOperation({ summary: '根据id查询帖子详情' })
+  async getPostById(@Param('id') id: string) {
+    const data = await this.postService.getPostById(id)
+    return {
+      state: 200,
+      message: '查询成功',
+      data,
+    }
+  }
+
   @Delete(':id')
   @ApiParam({
     description: '帖子id',

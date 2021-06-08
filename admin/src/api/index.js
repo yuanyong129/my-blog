@@ -10,6 +10,7 @@ export const getPost = params => http.get('post', { params }) // 获取帖子
 export const addPost = data => http.post('post', data) // 添加帖子
 export const updPost = data => http.put('post', data) // 修改帖子
 export const delPost = id => http.delete(`post/${id}`) // 删除帖子
+export const getPostById = id => http.get(`post/${id}`) // 根据id查询帖子
 // ↑帖子页面
 
 // ↓类型页面

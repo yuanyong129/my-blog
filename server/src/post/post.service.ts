@@ -14,6 +14,7 @@ export class PostService {
     if (!title) title = ''
     return await this.postModel
       .find({ title: new RegExp(`${title}`) })
+      .populate(['type', 'tags'])
       .skip((page - 1) * size)
       .limit(size)
       .sort({ createdAt: -1 })
@@ -37,5 +38,10 @@ export class PostService {
   // 删除帖子
   async delPost(_id: string) {
     await this.postModel.deleteOne({ _id })
+  }
+
+  // 根据id获取帖子
+  async getPostById(_id: string) {
+    return await this.postModel.findById(_id)
   }
 }

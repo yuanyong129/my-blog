@@ -9,17 +9,29 @@ import Layout from '@/layout'
 // 静态路由
 export const constantRoutes = [
   {
-    path : '/login',
+    path: '/login',
+    hidden: true,
     component: () => import('@/views/Login/'),
+    meta: {
+      title: '登录'
+    }
   },
   {
     path: '/register',
-    component: () => import('@/views/Login/Register')
+    hidden: true,
+    component: () => import('@/views/Login/Register'),
+    meta: {
+      title: '退出登录'
+    }
   },
   {
     path : '/',
     component: Layout,
     redirect: '/index',
+    meta: {
+      title: '主页',
+      icon: 'el-icon-location'
+    },
     children: [
       {
         path: 'index',
@@ -34,6 +46,10 @@ export const constantRoutes = [
     path: '/post',
     component: Layout,
     redirect: 'post/index',
+    meta: {
+      title: '帖子中心',
+      icon: 'el-icon-menu'
+    },
     children: [
       {
         path: 'index',
@@ -48,6 +64,10 @@ export const constantRoutes = [
     path: '/user',
     component: Layout,
     redirect: '/user/index',
+    meta: {
+      title: '用户中心',
+      icon: 'el-icon-s-tools'
+    },
     children: [
       {
         path: 'index',

@@ -7,7 +7,7 @@
     class="el-menu-wrap"
     router
     >
-    <el-submenu index="1">
+    <!-- <el-submenu index="1">
       <template slot="title">
         <i class="el-icon-location"></i>
         <span>主页</span>
@@ -35,11 +35,27 @@
       <el-menu-item index="/user/menu">
         <span slot="title">菜单管理</span>
       </el-menu-item>
+    </el-submenu> -->
+    
+    <el-submenu v-show="!item.hidden" v-for="item in routes" :key="item.path" :index="item.path">
+      <template slot="title">
+        <i :class="item.meta.icon"></i>
+        <span>{{item.meta.title}}</span>
+      </template>
+      <el-menu-item 
+        v-show="!item.hidden"
+        v-for="route in item.children"
+        :key="resolvePath(item.path, route.path)"
+        :index="resolvePath(item.path, route.path)"
+      >
+        {{ route.meta.title }}
+      </el-menu-item>
     </el-submenu>
   </el-menu>
 </template>
 
 <script>
+import { constantRoutes } from '@/router'
 export default {
   props: {
     isCollapse: {
@@ -54,9 +70,14 @@ export default {
   },
   data() {
     return {
+      routes: constantRoutes
     }
   },
-  methods: {}
+  methods: {
+    resolvePath(base, path) {
+      return base === '/' ? base + path : base + '/' + path
+    }
+  }
 }
 </script>
 

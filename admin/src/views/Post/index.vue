@@ -89,7 +89,6 @@ export default {
   },
   created() {
     this.init()
-    this.getRoles()
   },
   methods: {
     search() {

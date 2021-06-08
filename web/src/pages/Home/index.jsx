@@ -4,6 +4,7 @@ import {
   BookFilled,
   RightCircleFilled,
 } from '@ant-design/icons'
+import dayjs from 'dayjs'
 import Avatar from '@/assets/images/avatar.png'
 import { getPosts } from '@/api'
 import './index.scss'
@@ -29,10 +30,10 @@ export default class Home extends Component {
     return (
       <div data-component="home">
         <div className="up">
-          <img className="avatar" src={Avatar} alt="" />
+          <img className="avatar" src={Avatar} alt="头像-拉碧丝·罗赞贝尔克" />
           <div className="my-intro">
             <div className="name">空澄</div>
-            <div className="intro">一名普通的前端攻城狮，空澄乃是七月的别称~ </div>
+            <div className="intro">一名普通的前端攻城狮，falcom忠实粉丝一枚，空澄乃是七月的别称~</div>
           </div>
         </div>
         <div className="new-blog">
@@ -45,7 +46,10 @@ export default class Home extends Component {
           <div className="content">
             {
               this.state.posts.map(post => (
-                <div key={post._id}>{ post.title }</div>
+                <div className="post-wrap flex-row" key={post._id}>
+                  <div>{ post.title }</div>
+                  <div style={{display: 'inline-block'}}>{ dayjs(post.createdAt).format('YYYY-MM-DD')}</div>
+                </div>
               ))
             }
           </div>
@@ -58,6 +62,7 @@ export default class Home extends Component {
             <RightCircleFilled />
           </div>
         </div>
+
       </div>
     )
   }

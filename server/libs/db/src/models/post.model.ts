@@ -1,5 +1,6 @@
+import { Param } from './param.model'
 import { ApiProperty } from '@nestjs/swagger'
-import { modelOptions, Prop } from '@typegoose/typegoose'
+import { modelOptions, Prop, Ref } from '@typegoose/typegoose'
 
 @modelOptions({
   schemaOptions: {
@@ -29,4 +30,22 @@ export class Post {
   })
   @Prop()
   content: string
+
+  @ApiProperty({
+    description: '帖子类型',
+    example: '超自然',
+  })
+  @Prop({
+    ref: 'Param',
+  })
+  type: Ref<Param>
+
+  @ApiProperty({
+    description: '帖子标签',
+    example: '超自然',
+  })
+  @Prop({
+    ref: 'Param',
+  })
+  tags?: Ref<Param>[]
 }

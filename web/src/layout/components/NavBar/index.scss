@@ -5,8 +5,18 @@
   .nav-bar{
     justify-content: space-between;
   }
+  .ant-space-item{
+    height: 64px;
+  }
   .my-link{
+    display: block;
+    height: 64px;
+    line-height: 64px;
     color: rgb(121, 85, 72);
     padding: 0 20px;
+    &:hover{
+      color: white;
+      background-color: rgba(121, 85, 72, .5);
+    }
   }
 }

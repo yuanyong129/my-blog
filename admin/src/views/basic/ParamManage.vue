@@ -26,34 +26,14 @@
     <el-dialog
       :title="formOptions.title"
       :visible.sync="formVisible"
-      width="70%"
+      width="500px"
     >
       <el-form label-position="top" :model="form" :rules="rules" size="medium">
-        <el-form-item label="标题" prop="title">
-          <el-input v-model="form.title" :disabled="formOptions.disabled" placeholder="请输入标题"></el-input>
+        <el-form-item label="名称" prop="title">
+          <el-input v-model="form.title" :disabled="formOptions.disabled" placeholder="请输入名称" />
         </el-form-item>
-        <el-form-item label="分类" prop="type">
-          <el-select style="width: 100%" v-model="form.type" :disabled="formOptions.disabled" placeholder="请选择分类">
-            <el-option 
-              v-for="item in selectTypes" 
-              :key="item._id"
-              :label="item.title"
-              :value="item._id"
-            />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="标签" prop="tags">
-          <el-select style="width: 100%" v-model="form.tags" multiple :disabled="formOptions.disabled" placeholder="请选择分类">
-            <el-option 
-              v-for="item in selectTags" 
-              :key="item._id"
-              :label="item.title"
-              :value="item._id"
-            />
-          </el-select>
-        </el-form-item>
-        <el-form-item label="内容" prop="content">
-          <mavon-editor v-model="form.content" placeholder="请输入内容"></mavon-editor>
+        <el-form-item label="备注" prop="remark">
+          <el-input v-model="form.remark" :disabled="formOptions.disabled" placeholder="请输入备注" />
         </el-form-item>
       </el-form>
       <span slot="footer" class="dialog-footer">
@@ -66,14 +46,12 @@
 </template>
 
 <script>
-import { getPost, updPost, delPost, addPost, getParam } from '@/api'
-import { mavonEditor } from 'mavon-editor'
-import 'mavon-editor/dist/css/index.css'
+import { getParam, updParam, delParam, addParam } from '@/api'
 export default {
-  components: { mavonEditor },
   data() {
     return {
       searchParams: {
+        typeId: this.$route.query._id,
         title: '',
         page: 1,
         size: 10
@@ -89,8 +67,8 @@ export default {
         }
       ],
       tableColumns: [
-        { label: '标题', prop: 'title' },
-        { label: '内容', prop: 'content' }
+        { label: '名称', prop: 'title' },
+        { label: '备注', prop: 'remark' }
       ],
       tableOptions: {
         label: '操作',
@@ -103,16 +81,16 @@ export default {
       total: 0,
       formOptions: {},
       form: {},
-      rules: {},
-      formVisible: false,
-
-      selectTypes: [],
-      selectTags: []
+      rules: {
+        title: [
+          { required: true, message: '请输入标题', trigger: 'blur' }
+        ]
+      },
+      formVisible: false
     }
   },
   created() {
     this.init()
-    this.getSelectData()
   },
   methods: {
     search() {
@@ -122,37 +100,29 @@ export default {
     // 初始化
     async init() {
       try {
-        const { data } = await getPost(this.searchParams)
+        const { data } = await getParam(this.searchParams)
         this.tableData = data
       } catch (error) {
         console.log('获取帖子失败', error) 
-      }
-    },
-    async getSelectData() {
-      try {
-        const { data: types } = await getParam( { typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 100 } )
-        const { data: tags } = await getParam( { typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 100 } )
-        this.selectTags = tags
-        this.selectTypes = types
-      } catch (error) {
-        console.log('获取下拉框数据失败', '')
       }
     },
     // 添加表单初始化
     addDefault() {
       this.formVisible = true
       this.formOptions = this.$setForm('ADD')
-      this.form = {}
+      this.form = {
+        typeId: this.$route.query._id
+      }
     },
     // 修改表单初始化
     updDefault(row) {
       this.formVisible = true
       this.formOptions = this.$setForm('UPD')
-      this.form = { ...row }
+      this.form = Object.assign({}, row)
     },
     // 添加
     async add() {
-      const {state, message } = await addPost(this.form)
+      const {state, message } = await addParam(this.form)
       if (state === 200) {
         this.$message({
           message,
@@ -165,7 +135,7 @@ export default {
     },
     // 修改
     async update() {
-      const {state, message } = await updPost(this.form)
+      const {state, message } = await updParam(this.form)
       if (state === 200) {
         this.$message({
           message,
@@ -182,7 +152,7 @@ export default {
         confirmText: '确认',
         cancelText: '取消'
       }).then(async() => {
-        const { message } = await delPost(_id)
+        const { message } = await delParam(_id)
         this.$message({
           message,
           type: 'success'

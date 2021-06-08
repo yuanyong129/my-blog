@@ -43,6 +43,32 @@ export const constantRoutes = [
     ]
   },
   {
+    path : '/basic',
+    component: Layout,
+    redirect: '/basic/type',
+    meta: {
+      title: '基础数据管理',
+      icon: 'el-icon-info'
+    },
+    children: [
+      {
+        path: 'type',
+        component: () => import('@/views/basic/TypeManage'),
+        meta: {
+          title: '基础类型'
+        }
+      },
+      {
+        path: 'param',
+        hidden: true,
+        component: () => import('@/views/basic/ParamManage'),
+        meta: {
+          title: '基础参数'
+        }
+      }
+    ]
+  },
+  {
     path: '/post',
     component: Layout,
     redirect: 'post/index',

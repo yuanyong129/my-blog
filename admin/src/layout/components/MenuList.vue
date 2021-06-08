@@ -43,7 +43,7 @@
         <span>{{item.meta.title}}</span>
       </template>
       <el-menu-item 
-        v-show="!item.hidden"
+        v-show="!route.hidden"
         v-for="route in item.children"
         :key="resolvePath(item.path, route.path)"
         :index="resolvePath(item.path, route.path)"

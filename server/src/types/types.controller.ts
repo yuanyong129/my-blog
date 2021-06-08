@@ -1,18 +1,25 @@
-import { Post as PostMo } from '@libs/db/models/post.model'
-import { Body, Delete, Param, Put, Query } from '@nestjs/common'
-import { Post } from '@nestjs/common'
-import { Controller, Get } from '@nestjs/common'
+import { Type } from '@libs/db/models/type.model'
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common'
 import { ApiOperation, ApiParam, ApiQuery, ApiTags } from '@nestjs/swagger'
-import { PostService } from './post.service'
+import { TypesService } from './types.service'
 
-@ApiTags('帖子管理')
-@Controller('post')
-export class PostController {
-  constructor(private readonly postService: PostService) {}
+@ApiTags('类型管理')
+@Controller('types')
+export class TypesController {
+  constructor(private readonly typesService: TypesService) {}
 
   @ApiQuery({
     name: 'title',
-    description: '帖子名称',
+    description: '类型名称',
     required: false,
   })
   @ApiQuery({
@@ -27,7 +34,7 @@ export class PostController {
   async getPosts(@Query() { title, page, size }) {
     // 获取所有帖子
     try {
-      const data = await this.postService.getAllPosts(
+      const data = await this.typesService.getAllTypes(
         title,
         parseInt(page),
         parseInt(size),
@@ -38,14 +45,14 @@ export class PostController {
         data,
       }
     } catch (error) {
-      console.log('查询帖子co错误！', error)
+      console.log('查询类型co错误！', error)
     }
   }
 
   @Post()
-  @ApiOperation({ summary: '添加帖子' })
-  async addPost(@Body() post: PostMo) {
-    const res = await this.postService.addPost(post)
+  @ApiOperation({ summary: '添加类型' })
+  async addPost(@Body() type: Type) {
+    const res = await this.typesService.addType(type)
     switch (res) {
       case 200:
         return {
@@ -61,9 +68,9 @@ export class PostController {
   }
 
   @Put()
-  @ApiOperation({ summary: '修改帖子' })
-  updPost(@Body() post: PostMo) {
-    this.postService.updPost(post._id, post)
+  @ApiOperation({ summary: '修改类型' })
+  updPost(@Body() type: Type) {
+    this.typesService.updType(type._id, type)
     return {
       state: 200,
       message: '修改成功',
@@ -75,9 +82,9 @@ export class PostController {
     description: '帖子id',
     name: 'id',
   })
-  @ApiOperation({ summary: '删除帖子' })
+  @ApiOperation({ summary: '删除类型' })
   delPost(@Param('id') id: string) {
-    this.postService.delPost(id)
+    this.typesService.delType(id)
     return {
       state: 200,
       message: '删除成功',

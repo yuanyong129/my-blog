@@ -12,12 +12,14 @@ export class PostService {
   // 查询所有帖子
   async getAllPosts(title: string, page: number, size: number) {
     if (!title) title = ''
-    return await this.postModel
+    const list = await this.postModel
       .find({ title: new RegExp(`${title}`) })
       .populate(['type', 'tags'])
       .skip((page - 1) * size)
       .limit(size)
       .sort({ createdAt: -1 })
+    const total = await this.postModel.count({ title: new RegExp(`${title}`) })
+    return { list, total }
   }
   // 添加帖子
   async addPost(post: Post) {

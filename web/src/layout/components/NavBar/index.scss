@@ -1,17 +1,40 @@
+$navBarHeight: 64px;
 [data-component="navbar"]{
-  height: 64px;
+  height: $navBarHeight;
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: saturate(180%) blur(18px);
+  @media screen and (max-width: 720px) {
+    height: 50px;
+  }
   .nav-bar{
     justify-content: space-between;
+    overflow: hidden;
+    @media screen and (max-width: 720px) {
+      height: 50px;
+    }
   }
   .ant-space-item{
-    height: 64px;
+    height: $navBarHeight;
+  }
+  .web-nav{
+    @media screen and (max-width: 720px) {
+      display: none;
+    }
+  }
+  .phone-nav{
+    padding-left: 20px;
+    justify-content: space-between;
+    align-items: center;
+    display: none;
+    height: 100%;
+    @media screen and (max-width: 720px) {
+      display: flex;
+    }
   }
   .my-link{
     display: block;
-    height: 64px;
-    line-height: 64px;
+    height: $navBarHeight;
+    line-height: $navBarHeight;
     color: rgb(121, 85, 72);
     padding: 0 20px;
     &:hover{

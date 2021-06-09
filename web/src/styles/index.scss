@@ -1,5 +1,8 @@
 body {
+  width: 100%;
+  height: 100%;
   margin: 0;
+  overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,11 +14,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+#root{
+  width: 100%;
+  height: 100%;
+}
+
 .App {
-  width: 100vw;
-  height: 100vh;
+  // width: 100vw;
+  // height: 100vh;
+  width: 100%;
+  height: 100%;
+  color: rgb(121, 85, 72);
   // background: url('~@/assets/images/bg_02.png') center top fixed ;
-  background: url('~@/assets/images/bg_03.jpg') 0 / cover fixed;
+  // background: url('~@/assets/images/bg_03.jpg') 0 / cover fixed;
+  background: url('~@/assets/images/bg_01.jpg') 0 / cover fixed;
   // background-size: 100% 100%;
 }
 

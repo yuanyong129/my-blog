@@ -1,15 +1,21 @@
-
 .content {
+  position: relative;
   overflow: auto;
-  flex: 1;
+  // flex: 1;
+  height: calc(100% - 100px);
+  backdrop-filter: blur(15px);
+  @media screen and (max-width: 720px) {
+    height: calc(100% - 86px);
+  }
 }
 .footer{
+  height: 36px;
+  line-height: 36px;
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: saturate(180%) blur(18px);
-  padding: 12px;
 }
 .layout{
-  display: flex;
-  flex-direction: column;
+  // display: flex;
+  // flex-direction: column;
   height: 100%;
 }

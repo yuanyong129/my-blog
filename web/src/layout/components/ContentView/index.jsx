@@ -8,8 +8,8 @@ export default class ContentView extends Component {
         <Switch>
           <Suspense fallback={ <div className="text-primary" style={{ textAlign: 'center' }}>正在加载中...</div> }>
             <Route exact path="/" component={lazy(() => import('@/pages/Home'))}></Route>
-            <Route path="/blog" component={lazy(() => import('@/pages/userCenter/User'))}></Route>
-            <Route path="/user/role" component={lazy(() => import('@/pages/userCenter/Role'))}></Route>
+            <Route path="/blog" component={lazy(() => import('@/pages/Post'))}></Route>
+            <Route path="/novel" component={lazy(() => import('@/pages/Novel'))}></Route>
           </Suspense>
         </Switch>
       </Fragment>

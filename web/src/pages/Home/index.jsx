@@ -7,7 +7,7 @@ import {
 } from '@ant-design/icons'
 import Card from './components/Card'
 import dayjs from 'dayjs'
-import Avatar from '@/assets/images/avatar.png'
+import Avatar from '@/components/Avatar'
 import { getPosts } from '@/api'
 import './index.scss'
 
@@ -17,9 +17,9 @@ export default class Home extends Component {
   }
   async init() {
     try {
-      const { data } = await getPosts({ page: 1, size: 4 })
+      const { data: { list } } = await getPosts({ page: 1, size: 4 })
       this.setState({
-        posts: data
+        posts: list
       })
     } catch (error) {
       console.log('初始化首页失败', error)
@@ -32,7 +32,7 @@ export default class Home extends Component {
     return (
       <div data-component="home">
         <div className="up">
-          <img className="avatar" src={Avatar} alt="头像-拉碧丝·罗赞贝尔克" />
+          <Avatar className="avatar" />
           <div className="my-intro">
             <div className="name">空澄</div>
             <div className="intro">一名普通的前端攻城狮，falcom忠实粉丝一枚，空澄乃是七月的别称~</div>

@@ -1,6 +1,4 @@
 import http from '../utils/http'
 
-export const getPosts = params => http.get('post', { params }) // 登录接口
-
-export const initUsers = () => {}
-export const register = () => {}
+export const getPosts = params => http.get('post', { params }) // 获取帖子
+export const getParams = params => http.get('params', { params }) // 获取参数

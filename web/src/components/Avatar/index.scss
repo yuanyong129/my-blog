@@ -1,0 +1,13 @@
+[data-component="avatar"]{
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: bottom;
+  overflow: hidden;
+  display: inline-block;
+  .avatar{
+    width: 100%;
+    height: 100%;
+  }
+}

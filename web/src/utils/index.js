@@ -4,6 +4,11 @@ export const FORMTYPE = {
   GET: 'GET'
 }
 
+export const PUBSUB = {
+  OPENDRAWER: 'OPEN DRAWER',
+  CLOSEDRAWER: 'CLOSE DRAWER'
+}
+
 export const setFormOptions = type => {
   switch (type) {
     case FORMTYPE.ADD:

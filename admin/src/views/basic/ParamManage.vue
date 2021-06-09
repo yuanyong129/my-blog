@@ -15,7 +15,7 @@
       :tableData="tableData"
       :tableColumns="tableColumns"
       :tableOptions="tableOptions"
-      :total="total"
+      :total="tableTotal"
       :page="searchParams.page"
       :size="searchParams.size"
       @clickButton="clickButton"
@@ -78,7 +78,7 @@ export default {
           { type: 'danger', text: '删除', method: 'del' }
         ]
       },
-      total: 0,
+      tableTotal: 0,
       formOptions: {},
       form: {},
       rules: {
@@ -100,8 +100,9 @@ export default {
     // 初始化
     async init() {
       try {
-        const { data } = await getParam(this.searchParams)
-        this.tableData = data
+        const { data: { list, total } } = await getParam(this.searchParams)
+        this.tableData = list
+        this.tableTotal = total
       } catch (error) {
         console.log('获取帖子失败', error) 
       }

@@ -1,4 +1,5 @@
 [data-component="logo"]{
+  width: 166px;
   height: 100%;
   line-height: 64px;
   background-color: #28B9BE;
@@ -7,4 +8,8 @@
   font-weight: 700;
   color: white;
   box-sizing: border-box;
+  @media screen and (max-width: 720px) {
+    height: 50px;
+    line-height: 50px
+  }
 }

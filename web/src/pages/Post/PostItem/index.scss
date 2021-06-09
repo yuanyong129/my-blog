@@ -1,0 +1,16 @@
+[data-component="post-item"]{
+  border-radius: 5px;
+  padding: 15px;
+  margin: 10px 0;
+  background-color: rgba(245, 245, 245, .5);
+  cursor: pointer;
+  &:hover{
+    box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .3);
+  }
+  .p-title{
+    text-indent: 10px;
+    font-size: 26px;
+    color: rgb(84, 84, 84);
+    border-bottom: 1px solid rgb(84, 84, 84);
+  }
+}

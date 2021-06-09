@@ -1,0 +1,26 @@
+[data-component="menu-drawer"]{
+  top: -10vh;
+  position: absolute;
+  z-index: 71;
+  width: 80%;
+  height: 120vh;
+  right: -110%;
+  padding: 17.5vh 0 0 0;
+  transform: rotate(7.5deg);
+  // background: rgba(53, 91, 174, .72);
+  background: rgba(255, 255, 255, 0.72);
+  // background: rgba(60, 129, 216, 0.72);
+  backdrop-filter: saturate(180%) blur(18px);
+  transition: .3s;
+  .my-link{
+    padding-left: 30px;
+    margin-bottom: 25px;
+    color: rgb(121, 85, 72);
+    font-size: 24px;
+    display: block;
+    .en{
+      font-size: 16px;
+      font-weight: 700;
+    }
+  }
+}

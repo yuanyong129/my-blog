@@ -13,11 +13,19 @@ export class ParamsService {
   // 查询所有参数
   async getAllParam(typeId: string, title: string, page: number, size: number) {
     if (!title) title = ''
-    return await this.paramModel
+    const list = await this.paramModel
       .find({ title: new RegExp(`${title}`), typeId })
       .skip((page - 1) * size)
       .limit(size)
       .sort({ createdAt: -1 })
+    const total = await this.paramModel.count({
+      title: new RegExp(`${title}`),
+      typeId,
+    })
+    return {
+      list,
+      total,
+    }
   }
   // 添加参数
   async addParam(param: Param) {

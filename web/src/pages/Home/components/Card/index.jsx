@@ -4,7 +4,7 @@ import './index.scss'
 export default class Card extends Component {
   render() {
     return (
-      <div className="card-wrap" data-component="card">
+      <div className="card-wrap" data-component="card" onClick={this.props.onClick}>
         <div className="c-intro">
           <div className="c-title">{this.props.title}</div>
           <div className="c-hide">

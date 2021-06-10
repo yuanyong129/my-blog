@@ -15,6 +15,7 @@
         :prop="item.prop"
         :label="item.label"
         :width="item.width"
+        :show-overflow-tooltip="true"
         align="center">
         <template slot-scope="scope">
           <span v-if="item.render" :style="`color:${item.color ? item.color(scope.row) : 'black'}`">{{ item.render(scope.row) }}</span>

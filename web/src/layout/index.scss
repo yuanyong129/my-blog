@@ -3,7 +3,8 @@
   overflow: auto;
   // flex: 1;
   height: calc(100% - 100px);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(8px);
+  // backdrop-filter: blur(15px);
   @media screen and (max-width: 720px) {
     height: calc(100% - 86px);
   }

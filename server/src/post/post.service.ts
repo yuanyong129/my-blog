@@ -19,7 +19,8 @@ export class PostService {
       .limit(size)
       .sort({ createdAt: -1 })
     const total = await this.postModel.count({ title: new RegExp(`${title}`) })
-    return { list, total }
+    const totalAll = await this.postModel.count()
+    return { list, total, totalAll }
   }
   // 添加帖子
   async addPost(post: Post) {

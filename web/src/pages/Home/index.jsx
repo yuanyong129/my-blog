@@ -15,7 +15,7 @@ export default class Home extends Component {
   state = {
     posts: []
   }
-  async init() {
+  init = async() => {
     try {
       const { data: { list } } = await getPosts({ page: 1, size: 4 })
       this.setState({
@@ -25,6 +25,11 @@ export default class Home extends Component {
       console.log('初始化首页失败', error)
     }
   }
+
+  gotoDetails = (state) => {
+    this.props.history.push('/blogdetails', state) 
+  }
+
   componentDidMount() {
     this.init()
   }
@@ -53,7 +58,9 @@ export default class Home extends Component {
                   title={post.title}
                   tags={post.tags}
                   type={post.type? post.type.title: null}
-                  createdAt={dayjs(post.createdAt).format('YYYY-MM-DD')} />
+                  createdAt={dayjs(post.createdAt).format('YYYY-MM-DD')}
+                  onClick={() => this.gotoDetails(post)}
+                />
               ))
             }
           </div>

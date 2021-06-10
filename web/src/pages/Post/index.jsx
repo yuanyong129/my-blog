@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Pagination } from 'antd'
 import {
   AppstoreFilled,
   TagsFilled
@@ -14,25 +15,33 @@ export default class Post extends Component {
   state = {
     posts: [],
     postTotal: 0,
+    postCount: 0,
     tags: [],
     tagsTotal: 0,
     types: []
   }
 
-  async init() {
+  searchParams = {
+    page: 1,
+    size: 10
+  }
+
+
+  init = async() => {
     this.getPosts()
     this.getParams()
   }
   // 获取所有帖子
-  async getPosts() {
-    const { data: { list, total }} = await getPosts({ page: 1, size: 10 })
+  getPosts = async() => {
+    const { data: { list, total, totalAll }} = await getPosts(this.searchParams)
     this.setState({
       posts: list,
-      postTotal: total
+      postTotal: total,
+      postCount: totalAll
     })
   }
   // 获取所有标签
-  async getParams() {
+  getParams = async() => {
     const { data: { list, total } } = await getParams({ typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 10 })
     const { data: { list: types } } = await getParams({ typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 10 })
     this.setState({
@@ -40,6 +49,13 @@ export default class Post extends Component {
       tagsTotal: total,
       types
     })
+  }
+
+  gotoDetails = (state) => this.props.history.push('/blogdetails', state) 
+
+  pagiChange = (page) => {
+    this.searchParams.page = page
+    this.getPosts()
   }
 
   componentDidMount() {
@@ -61,7 +77,7 @@ export default class Post extends Component {
               <div className="info-number flex-row">
                 <div>
                   <div>文章</div>
-                  <div>{this.state.postTotal}</div>
+                  <div>{this.state.postCount}</div>
                 </div>
                 <div className="divider"></div>
                 <div>
@@ -92,8 +108,17 @@ export default class Post extends Component {
                   key={post._id}
                   tags={post.tags}
                   title={post.title}
+                  onClick={() => this.gotoDetails(post)}
                 />)
             }
+            <div style={{textAlign: 'center'}}>
+              <Pagination
+                defaultCurrent={this.searchParams.page}
+                simple
+                size="small"
+                total={this.state.postTotal}
+                onChange={this.pagiChange} />
+            </div>
           </div>
         </div>
       </div>

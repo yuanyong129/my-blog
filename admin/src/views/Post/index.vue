@@ -125,8 +125,8 @@ export default {
     },
     async getSelectData() {
       try {
-        const { data: types } = await getParam( { typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 100 } )
-        const { data: tags } = await getParam( { typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 100 } )
+        const { data: { list: types }} = await getParam( { typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 100 } )
+        const { data: { list: tags }} = await getParam( { typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 100 } )
         this.selectTags = tags
         this.selectTypes = types
       } catch (error) {

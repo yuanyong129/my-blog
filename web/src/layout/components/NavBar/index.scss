@@ -33,13 +33,33 @@ $navBarHeight: 64px;
   }
   .my-link{
     display: block;
+    position: relative;
     height: $navBarHeight;
     line-height: $navBarHeight;
     color: rgb(121, 85, 72);
     padding: 0 20px;
+    font-family: 'PPT';
     &:hover{
       color: white;
+      // background-color: rgba(121, 85, 72, .5);
+      &::after{
+        visibility: visible;
+        opacity: .7;
+        width: 100%;
+      }
+    }
+    &::after{
       background-color: rgba(121, 85, 72, .5);
+      content: "";
+      visibility: hidden;
+      transition: .4s;
+      position: absolute;
+      width: 0;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      z-index: -1;
+      opacity: 0
     }
   }
 }

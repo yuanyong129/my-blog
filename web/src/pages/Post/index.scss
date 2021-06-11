@@ -58,9 +58,9 @@
         &:hover{
           box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .6);
         }
-        @media screen and (max-width: 720px) {
-          display: none;
-        }
+        // @media screen and (max-width: 720px) {
+        //   display: none;
+        // }
         .title{
           font-size: 18px;
         }
@@ -80,8 +80,11 @@
       &:hover{
         box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .3);
       }
+      &.active{
+        background-color: chocolate;
+      }
     }
-    .posts{
+    .posts, .no-posts{
       border-radius: 3px;
       width: 63%;
       height: fit-content;
@@ -94,6 +97,9 @@
         margin-top: 20px;
       }
       background-color: rgba(245,245,245, .72);
+    }
+    .no-posts{
+      text-align: center;
     }
   }
 }

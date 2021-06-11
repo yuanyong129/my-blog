@@ -16,7 +16,7 @@ export default class Trigger extends Component {
   }
 
   componentDidMount() {
-    this.pubSubToken = PubSub.subscribe(PUBSUB.CLOSEDRAWER, (msg, data) => {
+    this.pubSubToken = PubSub.subscribe(PUBSUB.CLOSEDRAWER, (msg) => {
       if (msg === PUBSUB.CLOSEDRAWER) this.onTrigger()
     })
     window.onresize = () => {

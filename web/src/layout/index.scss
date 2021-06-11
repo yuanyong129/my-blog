@@ -5,9 +5,6 @@
   height: calc(100% - 100px);
   backdrop-filter: blur(8px);
   // backdrop-filter: blur(15px);
-  @media screen and (max-width: 720px) {
-    height: calc(100% - 86px);
-  }
 }
 .footer{
   height: 36px;
@@ -19,4 +16,29 @@
   // display: flex;
   // flex-direction: column;
   height: 100%;
+}
+
+.header-phone{
+  height: 40px;
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
+.header-holder{
+  display: none;
+  height: 40px;
+}
+
+@media screen and (max-width: 720px) {
+  .content {
+    height: calc(100% - 36px);
+  }
+  .header{
+    display: none;
+  }
+  .header-phone, .header-holder{
+    display: block;
+  }
 }

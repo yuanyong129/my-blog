@@ -16,6 +16,16 @@ export class PostController {
     required: false,
   })
   @ApiQuery({
+    name: 'type',
+    description: '帖子类型',
+    required: false,
+  })
+  @ApiQuery({
+    name: 'tag',
+    description: '帖子标签',
+    required: false,
+  })
+  @ApiQuery({
     name: 'page',
     description: '页码',
   })
@@ -24,11 +34,13 @@ export class PostController {
     description: '页面数量',
   })
   @Get()
-  async getPosts(@Query() { title, page, size }) {
+  async getPosts(@Query() { title, page, size, type, tag }) {
     // 获取所有帖子
     try {
       const data = await this.postService.getAllPosts(
         title,
+        type,
+        tag,
         parseInt(page),
         parseInt(size),
       )

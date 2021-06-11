@@ -26,10 +26,6 @@ export default class Home extends Component {
     }
   }
 
-  gotoDetails = (state) => {
-    this.props.history.push('/blogdetails', state) 
-  }
-
   componentDidMount() {
     this.init()
   }
@@ -48,7 +44,7 @@ export default class Home extends Component {
             <div className="t-text">
               <EditFilled />&nbsp;&nbsp;最新博客
             </div>
-            <RightCircleFilled />
+            <RightCircleFilled onClick={() => this.props.history.push('/blog')} />
           </div>
           <div className="content">
             {
@@ -59,7 +55,7 @@ export default class Home extends Component {
                   tags={post.tags}
                   type={post.type? post.type.title: null}
                   createdAt={dayjs(post.createdAt).format('YYYY-MM-DD')}
-                  onClick={() => this.gotoDetails(post)}
+                  onClick={() => this.props.history.push('/blogdetails', post)}
                 />
               ))
             }

@@ -10,16 +10,27 @@ export class PostService {
   ) {}
 
   // 查询所有帖子
-  async getAllPosts(title: string, page: number, size: number) {
-    if (!title) title = ''
+  async getAllPosts(
+    title = '',
+    type = '',
+    tag = '',
+    page: number,
+    size: number,
+  ) {
+    const findCondition = { title: new RegExp(`${title}`), type, tags: tag }
+    if (!title) delete findCondition.title
+    if (!type) delete findCondition.type
+    if (!tag) delete findCondition.tags
     const list = await this.postModel
-      .find({ title: new RegExp(`${title}`) })
+      .find(findCondition)
       .populate(['type', 'tags'])
       .skip((page - 1) * size)
       .limit(size)
       .sort({ createdAt: -1 })
-    const total = await this.postModel.count({ title: new RegExp(`${title}`) })
-    const totalAll = await this.postModel.count()
+    const total = await this.postModel.countDocuments({
+      title: new RegExp(`${title}`),
+    })
+    const totalAll = await this.postModel.countDocuments()
     return { list, total, totalAll }
   }
   // 添加帖子

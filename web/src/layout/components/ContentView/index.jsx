@@ -13,6 +13,7 @@ export default class ContentView extends Component {
             <Route path="/blog" component={lazy(() => import('@/pages/Post'))}></Route>
             <Route path="/blogdetails" component={lazy(() => import('@/pages/Post/PostDetails'))}></Route>
             <Route path="/novel" component={lazy(() => import('@/pages/Novel'))}></Route>
+            <Route path="/about" component={lazy(() => import('@/pages/About'))}></Route>
           </Suspense>
         </Switch>
       </Fragment>

@@ -61,14 +61,14 @@ export default class Home extends Component {
             }
           </div>
         </div>
-        <div className="new-novel">
+        {/* <div className="new-novel">
           <div className="title flex-row">
             <div>
               <BookFilled />&nbsp;&nbsp;最新小说
             </div>
             <RightCircleFilled />
           </div>
-        </div>
+        </div> */}
 
       </div>
     )

@@ -55,14 +55,14 @@ export default class MenuDrawer extends Component {
           <div>我的博客</div>
           <div className="en">MY BLOG</div>
         </NavLink>
-        <NavLink className="my-link" to='/novel' onClick={this.clickMenu}>
+        {/* <NavLink className="my-link" to='/novel' onClick={this.clickMenu}>
           <div>我的小说</div>
           <div className="en">MY LIGHT NOVEL</div>
         </NavLink>
         <NavLink className="my-link" to='/origami' onClick={this.clickMenu}>
           <div>我的折纸</div>
           <div className="en">MY ORIGAMI</div>
-        </NavLink>
+        </NavLink> */}
         <NavLink className="my-link" to='/about' onClick={this.clickMenu}>
           <div>关于</div>
           <div className="en">ABOUT</div>

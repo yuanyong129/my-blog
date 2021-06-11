@@ -15,8 +15,8 @@ export default class NavBar extends Component {
             <Logo />
             <NavLink className="my-link" to="/" > 首页 </NavLink>
             <NavLink className="my-link" to="/blog" > 我的博客 </NavLink>
-            <NavLink className="my-link" to="/novel" > 我的小说 </NavLink>
-            <NavLink className="my-link" to="/origami" > 我的折纸 </NavLink>
+            {/* <NavLink className="my-link" to="/novel" > 我的小说 </NavLink>
+            <NavLink className="my-link" to="/origami" > 我的折纸 </NavLink> */}
             <NavLink className="my-link" to="/about" > 关于 </NavLink>
           </Space>
           <div className="phone-nav">

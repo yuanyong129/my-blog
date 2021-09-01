@@ -2,7 +2,7 @@ import axios from 'axios'
 import { message as Message } from 'antd'
 import { getToken } from './auth'
 
-const ip = 'http://192.168.1.114:3080/blog/'
+const ip = 'http://192.168.1.107:3080/blog/'
 const http = axios.create({
   baseURL: ip,
   timeout: 3000
@@ -29,8 +29,13 @@ http.interceptors.response.use(
     }
   },
   err => {
-    const { message } = err.response.data
-    Message.error(message)
+    if(err.response) {
+      const { message } = err.response.data
+      Message.error(message)
+    } else {
+      Message.error('无法连接服务器')
+    }
+    
     // console.log(message)
   }
 )

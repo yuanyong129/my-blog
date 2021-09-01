@@ -7,7 +7,7 @@ import './index.scss'
 export default class MenuDrawer extends Component {
   state = {
     drawerStyle: {
-      right: '-110%'
+      top: '-100%'
     }
   }
 
@@ -16,16 +16,16 @@ export default class MenuDrawer extends Component {
   // 打开菜单抽屉
   showDrawer = (collapsed) => {
     if (!collapsed) {
-      this.drawerStyle = { right: '-10%' }
+      this.drawerStyle = { top: '0%' }
       this.setState({
         drawerStyle: {
-          right: '-10%'
+          top: '0%'
         }
       })
     } else {
       this.setState({
         drawerStyle: {
-          right: '-110%'
+          top: '-100%'
         }
       })
     }
@@ -47,6 +47,7 @@ export default class MenuDrawer extends Component {
   render() {
     return (
       <div data-component="menu-drawer" style={this.state.drawerStyle}>
+        <div></div>
         <NavLink className="my-link" to='/' onClick={this.clickMenu}>
           <div>首页</div>
           <div className="en">HOME</div>

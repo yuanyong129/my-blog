@@ -47,22 +47,30 @@ export default class Post extends Component {
   } 
   // 获取所有帖子
   getPosts = async() => {
-    const { data: { list, total, totalAll }} = await getPosts(this.searchParams)
-    this.setState({
-      posts: list,
-      postTotal: total,
-      postCount: totalAll
-    })
+    try {
+      const { data: { list, total, totalAll }} = await getPosts(this.searchParams)
+      this.setState({
+        posts: list,
+        postTotal: total,
+        postCount: totalAll
+      })
+    } catch (error) {
+     console.log('获取所有帖子失败') 
+    }
   }
   // 获取所有标签
   getParams = async() => {
-    const { data: { list, total } } = await getParams({ typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 10 })
-    const { data: { list: types } } = await getParams({ typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 10 })
-    this.setState({
-      tags: list,
-      tagsTotal: total,
-      types
-    })
+    try {
+      const { data: { list, total } } = await getParams({ typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 10 })
+      const { data: { list: types } } = await getParams({ typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 10 })
+      this.setState({
+        tags: list,
+        tagsTotal: total,
+        types
+      })
+    } catch (err) {
+      console.log('获取所有标签失败')
+    }
   } 
 
   pagiChange = (page) => {

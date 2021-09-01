@@ -1,13 +1,11 @@
 [data-component="logo"]{
-  width: 166px;
-  height: 100%;
-  line-height: 64px;
-  background-color: #28B9BE;
-  padding: 0 20px;
-  font-size: 24px;
+  line-height: 36px;
+  // background-color: #28B9BE;
+  background-color: transparent;
+  padding: 0 10px;
+  font-size: 20px;
   font-weight: 700;
   font-family: Arial;
-  color: white;
   cursor: default;
   box-sizing: border-box;
   @media screen and (max-width: 720px) {

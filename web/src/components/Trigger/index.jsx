@@ -19,12 +19,12 @@ export default class Trigger extends Component {
     this.pubSubToken = PubSub.subscribe(PUBSUB.CLOSEDRAWER, (msg) => {
       if (msg === PUBSUB.CLOSEDRAWER) this.onTrigger()
     })
-    window.onresize = () => {
-      const width = document.getElementById('root').clientWidth
-      if (width > 720 && !this.state.collapsed) {
-        this.onTrigger()
-      }
-    }
+    // window.onresize = () => {
+    //   const width = document.getElementById('root').clientWidth
+    //   if (width > 720 && !this.state.collapsed) {
+    //     this.onTrigger()
+    //   }
+    // }
   }
 
   componentWillUnmount() {

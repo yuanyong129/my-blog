@@ -1,14 +1,16 @@
 [data-component="menu-drawer"]{
   position: absolute;
-  z-index: 71;
+  z-index: 999;
   width: 100vw;
   height: 100vh;
   top: -100%;
+  display: grid;
+  grid-template-columns: 30% 40% 30%;
   // transform: rotate(7.5deg);
   // background: rgba(53, 91, 174, .72);
-  background: rgba(255, 255, 255, 0.72);
-  // background: rgba(60, 129, 216, 0.72);
-  backdrop-filter: saturate(180%) blur(18px);
+  // background: rgba(255, 255, 255, 0.72);
+  background: transparent;
+  backdrop-filter: saturate(100%) blur(6px);
   transition: .3s;
   .my-link{
     padding-left: 30px;
@@ -20,5 +22,11 @@
       font-size: 16px;
       font-weight: 700;
     }
+  }
+  .menu-d-left{
+    background: rgba(255, 255, 255, 0.72);
+  }
+  .menu-d-right{
+    background: rgba(255, 255, 255, 0.72);
   }
 }

@@ -8,6 +8,7 @@ import Avatar from '@/components/Avatar'
 import Tag from '@/components/Tag'
 import PostItem from './PostItem'
 import { getPosts, getParams } from '@/api'
+import { ParamOptions } from '@/utils'
 import './index.scss'
 
 export default class Post extends Component {
@@ -61,8 +62,8 @@ export default class Post extends Component {
   // 获取所有标签
   getParams = async() => {
     try {
-      const { data: { list, total } } = await getParams({ typeId: '60bf112a1c2d992e6879cd89', page: 1, size: 10 })
-      const { data: { list: types } } = await getParams({ typeId: '60bf0c5f1c2d992e6879cd87', page: 1, size: 10 })
+      const { data: { list, total } } = await getParams({ typeId: ParamOptions.TAG_ID, page: 1, size: 10 })
+      const { data: { list: types } } = await getParams({ typeId: ParamOptions.CATEGORY_ID, page: 1, size: 10 })
       this.setState({
         tags: list,
         tagsTotal: total,

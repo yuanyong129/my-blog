@@ -28,3 +28,8 @@ export function setFormOptions(type, title) {
       return {}
   }
 }
+
+export class ParamOptions {
+  static CATEGORY_ID = '61358ec4fa0e96542c489c95'
+  static TAG_ID = '61358ecefa0e96542c489c96'
+}

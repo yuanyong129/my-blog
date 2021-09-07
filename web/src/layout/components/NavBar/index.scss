@@ -1,68 +1,14 @@
-$navBarHeight: 64px;
-
+$navBarHeight: 50px;
 [data-component="navbar"]{
   height: $navBarHeight;
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: saturate(180%) blur(18px);
-  // @media screen and (max-width: 720px) {
-  //   height: 50px;
-  // }
-  .nav-bar{
-    justify-content: space-between;
-    overflow: hidden;
-  }
-  .ant-space-item{
-    height: $navBarHeight;
-  }
-  .web-nav{
-    @media screen and (max-width: 720px) {
-      display: none;
-    }
-  }
   .phone-nav{
-    padding-left: 20px;
     justify-content: space-between;
     align-items: center;
-    display: none;
     height: 100%;
     @media screen and (max-width: 720px) {
       display: flex;
     }
-  }
-  .my-link{
-    display: block;
-    position: relative;
-    height: $navBarHeight;
-    line-height: $navBarHeight;
-    color: rgb(121, 85, 72);
-    padding: 0 20px;
-    // font-family: 'PPT';
-    &:hover{
-      color: white;
-      // background-color: rgba(121, 85, 72, .5);
-      &::after{
-        visibility: visible;
-        opacity: .7;
-        width: 100%;
-      }
-    }
-    &::after{
-      background-color: rgba(121, 85, 72, .5);
-      content: "";
-      visibility: hidden;
-      transition: .4s;
-      position: absolute;
-      width: 0;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: -1;
-      opacity: 0
-    }
-  }
-}
-@media screen and (max-width: 720px) {
-  [data-component="navbar"]{
-    height: 50px;
   }
 }

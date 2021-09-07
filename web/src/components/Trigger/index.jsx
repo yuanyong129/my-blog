@@ -36,10 +36,11 @@ export default class Trigger extends Component {
       <div
         className={this.state.collapsed ? '' : 'active'}
         data-component="trigger" onClick={this.onTrigger}
+        style={{ margin: this.props.margin || '0' }}
       >
-        <span></span>
-        <span></span>
-        <span></span>
+        <span style={{backgroundColor: this.props.color || '#ffffff'}}></span>
+        <span style={{backgroundColor: this.props.color || '#ffffff'}}></span>
+        <span style={{backgroundColor: this.props.color || '#ffffff'}}></span>
       </div>
     )
   }

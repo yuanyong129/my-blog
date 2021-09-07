@@ -1,18 +1,9 @@
+@import '~@/styles/variables.scss';
 .content {
   position: relative;
   overflow: auto;
   // flex: 1;
-  // height: calc(100% - 100px);
-  height: 100%;
-  // backdrop-filter: grayscale(100%);
-  
-  // backdrop-filter: blur(15px);
-}
-.footer{
-  height: 36px;
-  line-height: 36px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: saturate(180%) blur(18px);
+  height: calc(100% - #{$navBarHeight});
 }
 .layout{
   // display: flex;
@@ -29,7 +20,7 @@
   display: block;
   position: absolute;
   top: 0;
-  left: 0;
+  right: 0;
   z-index: 9;
 }
 .header-holder{

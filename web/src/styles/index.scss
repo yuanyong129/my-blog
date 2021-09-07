@@ -100,6 +100,7 @@ $colors: (
   'danger': #F56C6C,
 	'white': white
 );
+
 @each $key, $color in $colors {
 	.text-#{$key} {
 		color: $color !important;

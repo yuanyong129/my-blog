@@ -13,7 +13,7 @@ const models = TypegooseModule.forFeature([User, Menu, Role, Post, Type, Param])
 @Global() // 标记为全局可见
 @Module({
   imports: [
-    TypegooseModule.forRoot('mongodb://localhost/myblog', {
+    TypegooseModule.forRoot('mongodb://192.168.100.7/myblog', {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,

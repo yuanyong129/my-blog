@@ -2,7 +2,7 @@ import axios from 'axios'
 import { message as Message } from 'antd'
 import { getToken } from './auth'
 
-const ip = 'http://192.168.1.116:3080/blog/'
+const ip = 'http://192.168.1.112:3080/blog/'
 const http = axios.create({
   baseURL: ip,
   timeout: 3000

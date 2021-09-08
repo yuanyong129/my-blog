@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import PubSub from 'pubsub-js'
+import dayjs from 'dayjs'
 import { PUBSUB } from '@/utils'
 // import Trigger from '@/components/Trigger'
 import './index.scss'
@@ -52,7 +53,9 @@ export default class MenuDrawer extends Component {
         </div>
 
         <div className="menu-d-center">
-          { Date.now() }
+          <div className="menu-date">
+            DATE:&nbsp;&nbsp;{ dayjs(Date.now()).format('YYYY-DD-MM')  }
+          </div>
         </div>
 
         <div className="menu-d-right">

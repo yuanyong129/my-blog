@@ -8,7 +8,6 @@ import { RolesModule } from './roles/roles.module'
 import { AuthModule } from './auth/auth.module'
 import { CommonModule } from '@libs/common'
 import { PostModule } from './post/post.module'
-import { TypesModule } from './types/types.module'
 import { ParamsModule } from './params/params.module'
 
 @Module({
@@ -20,7 +19,6 @@ import { ParamsModule } from './params/params.module'
     AuthModule,
     CommonModule,
     PostModule,
-    TypesModule,
     ParamsModule,
   ],
   controllers: [AppController],

@@ -29,7 +29,20 @@ export function setFormOptions(type, title) {
   }
 }
 
-export class ParamOptions {
-  static CATEGORY_ID = '61358ec4fa0e96542c489c95'
-  static TAG_ID = '61358ecefa0e96542c489c96'
+export const TypeCategory = [
+  {
+    title: '分类',
+    typeId: 0,
+    remark: '分类'
+  },
+  {
+    title: '标签',
+    typeId: 1,
+    remark: '标签'
+  }
+]
+
+export class PARAM_OPTIONS {
+  static CATEGORY_ID = 0
+  static TAG_ID = 1
 }

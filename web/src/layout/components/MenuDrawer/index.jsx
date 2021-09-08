@@ -92,10 +92,10 @@ export default class MenuDrawer extends Component {
           </div>
 
           <div className="menu-exit">
-            <NavLink className="my-link-small" to='' onClick={this.clickMenu}>
+            <div className="my-link-small" to='' onClick={this.clickMenu} style={{ cursor: 'pointer' }}>
               <div>退出</div>
               <div className="en">EXIT</div>
-            </NavLink>
+            </div>
           </div>
         </div>
 

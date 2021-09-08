@@ -5,15 +5,14 @@ import { Menu } from './models/menu.model'
 import { User } from './models/user.model'
 import { Role } from './models/role.model'
 import { Post } from './models/post.model'
-import { Type } from './models/type.model'
 import { Param } from './models/param.model'
 
-const models = TypegooseModule.forFeature([User, Menu, Role, Post, Type, Param])
+const models = TypegooseModule.forFeature([User, Menu, Role, Post, Param])
 
 @Global() // 标记为全局可见
 @Module({
   imports: [
-    TypegooseModule.forRoot('mongodb://192.168.100.7/myblog', {
+    TypegooseModule.forRoot('mongodb://localhost/myblog', {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,

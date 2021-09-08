@@ -8,7 +8,7 @@ export default class PostDetails extends Component {
   }
   render() {
     return (
-      <div data-component="post-details">
+      <div data-component="post-details" className="box-shadow">
         <div className="post-content-wrap">
           <div className="post-title">
             {this.props.location.state.title}

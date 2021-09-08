@@ -9,6 +9,6 @@
   color: white;
   cursor: pointer;
   &.active{
-    background-color: chocolate;
+    background-color: chocolate !important;
   }
 }

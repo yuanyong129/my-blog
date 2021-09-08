@@ -3,7 +3,7 @@
     <div class="option-area flex-row">
       <div class="left flex-row">
         <div style="width: 60px; margin-right: 20px">搜索</div>
-        <el-input style="margin-right: 20px" v-model="searchParams.title" size="medium" placeholder="请输入帖子名称"></el-input>
+        <el-input style="margin-right: 20px" v-model="searchParams.title" size="medium" placeholder="请输入参数名称"></el-input>
         <el-button size="medium" type="primary" @click="search">搜索</el-button>
       </div>
       <div class="right">

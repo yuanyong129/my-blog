@@ -68,7 +68,7 @@
 <script>
 import { getPost, updPost, delPost, addPost, getParam, getPostById } from '@/api'
 import { mavonEditor } from 'mavon-editor'
-import { ParamOptions } from '@/utils'
+import { PARAM_OPTIONS } from '@/utils'
 import 'mavon-editor/dist/css/index.css'
 export default {
   components: { mavonEditor },
@@ -126,8 +126,8 @@ export default {
     },
     async getSelectData() {
       try {
-        const { data: { list: types }} = await getParam( { typeId: ParamOptions.CATEGORY_ID, page: 1, size: 100 } )
-        const { data: { list: tags }} = await getParam( { typeId: ParamOptions.TAG_ID, page: 1, size: 100 } )
+        const { data: { list: types }} = await getParam( { typeId: PARAM_OPTIONS.CATEGORY_ID, page: 1, size: 100 } )
+        const { data: { list: tags }} = await getParam( { typeId: PARAM_OPTIONS.TAG_ID, page: 1, size: 100 } )
         this.selectTags = tags
         this.selectTypes = types
       } catch (error) {

@@ -8,7 +8,7 @@ import Avatar from '@/components/Avatar'
 import Tag from '@/components/Tag'
 import PostItem from './PostItem'
 import { getPosts, getParams } from '@/api'
-import { ParamOptions } from '@/utils'
+import { PARAM_OPTIONS } from '@/utils'
 import './index.scss'
 
 export default class Post extends Component {
@@ -62,8 +62,8 @@ export default class Post extends Component {
   // 获取所有标签
   getParams = async() => {
     try {
-      const { data: { list, total } } = await getParams({ typeId: ParamOptions.TAG_ID, page: 1, size: 10 })
-      const { data: { list: types } } = await getParams({ typeId: ParamOptions.CATEGORY_ID, page: 1, size: 10 })
+      const { data: { list, total } } = await getParams({ typeId: PARAM_OPTIONS.TAG_ID, page: 1, size: 10 })
+      const { data: { list: types } } = await getParams({ typeId: PARAM_OPTIONS.CATEGORY_ID, page: 1, size: 10 })
       this.setState({
         tags: list,
         tagsTotal: total,
@@ -88,7 +88,7 @@ export default class Post extends Component {
       <div data-component="post">
         <div className="post-wrap">
           <div className="infos">
-            <div className="info">
+            <div className="info box-shadow">
               <div style={{ textAlign: 'center' }}>
                 <Avatar />
               </div>
@@ -107,7 +107,7 @@ export default class Post extends Component {
                 </div>
               </div>
             </div>
-            <div className="classify">
+            <div className="classify box-shadow">
               <div className="title">&nbsp;&nbsp;<AppstoreFilled />&nbsp;&nbsp;分类</div>
               <div style={{ marginTop: '10px' }}>
                 <div className={`classify-item ${this.searchParams.type ? '' : 'active'}`} onClick={() => this.search({type:''})}>全部</div>
@@ -121,13 +121,14 @@ export default class Post extends Component {
                   </div>)}
               </div>
             </div>
-            <div className="tags">
+            <div className="tags box-shadow">
               <div className="title">&nbsp;&nbsp;<TagsFilled />&nbsp;&nbsp;标签</div>
               <div style={{ marginTop: '10px' }}>
-                <Tag title='全部' openSelect={true} currentTag={this.searchParams.tag} ownTag='' onClick={() => this.search({tag: ''})} />
+                <Tag title='全部' bgColor="#acb9f2" openSelect={true} currentTag={this.searchParams.tag} ownTag='' onClick={() => this.search({tag: ''})} />
                 {
                   this.state.tags.map(tag =>
                     <Tag
+                      bgColor="#acb9f2"
                       openSelect={true}
                       currentTag={this.searchParams.tag}
                       ownTag={tag._id}
@@ -142,7 +143,7 @@ export default class Post extends Component {
           </div>
           {
             this.state.posts.length > 0 ?
-            <div className="posts">
+            <div className="posts box-shadow">
               {
                 this.state.posts.map(post =>
                   <PostItem
@@ -163,7 +164,7 @@ export default class Post extends Component {
                   onChange={this.pagiChange} />
               </div>
             </div> :
-            <div className="no-posts">暂无数据···</div>
+            <div className="no-posts box-shadow">暂无数据···</div>
           }
           
         </div>

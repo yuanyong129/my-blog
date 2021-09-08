@@ -1,6 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
 import { modelOptions, Prop, Ref } from '@typegoose/typegoose'
-import { Type } from './type.model'
 
 @modelOptions({
   schemaOptions: {
@@ -10,11 +9,9 @@ import { Type } from './type.model'
 export class Param {
   _id?: string
 
-  @ApiProperty({ description: '类型id', example: '' })
-  @Prop({
-    ref: Type,
-  })
-  typeId: Ref<Type>
+  @ApiProperty({ description: '类型id', example: 0 })
+  @Prop()
+  typeId: number
 
   @ApiProperty({
     description: '参数名称',

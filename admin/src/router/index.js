@@ -11,7 +11,7 @@ export const constantRoutes = [
   {
     path: '/login',
     hidden: true,
-    component: () => import('@/views/Login/'),
+    component: () => import('@/views/auth/Login'),
     meta: {
       title: '登录'
     }
@@ -19,7 +19,7 @@ export const constantRoutes = [
   {
     path: '/register',
     hidden: true,
-    component: () => import('@/views/Login/Register'),
+    component: () => import('@/views/auth/Register'),
     meta: {
       title: '退出登录'
     }
@@ -35,7 +35,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/Home/'),
+        component: () => import('@/views/home/Home'),
         meta: {
           title: '主页'
         }
@@ -79,7 +79,7 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/Post'),
+        component: () => import('@/views/post/Post'),
         meta: {
           title: '帖子管理'
         }
@@ -97,21 +97,21 @@ export const constantRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/User/'),
+        component: () => import('@/views/user/User'),
         meta: {
           title: '用户管理'
         }
       },
       {
         path: 'role',
-        component: () => import('@/views/User/Role'),
+        component: () => import('@/views/user/Role'),
         meta: {
           title: '角色管理'
         }
       },
       {
         path: 'menu',
-        component: () => import('@/views/User/Menu'),
+        component: () => import('@/views/user/Menu'),
         meta: {
           title: '菜单管理'
         }

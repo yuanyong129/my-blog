@@ -9,6 +9,7 @@ import { AuthModule } from './auth/auth.module'
 import { CommonModule } from '@libs/common'
 import { PostModule } from './post/post.module'
 import { ParamsModule } from './params/params.module'
+import { NovelsModule } from './novels/novels.module'
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ParamsModule } from './params/params.module'
     CommonModule,
     PostModule,
     ParamsModule,
+    NovelsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

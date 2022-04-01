@@ -6,8 +6,17 @@ import { User } from './models/user.model'
 import { Role } from './models/role.model'
 import { Post } from './models/post.model'
 import { Param } from './models/param.model'
+import { Novel, Chapter } from './models/novel.model'
 
-const models = TypegooseModule.forFeature([User, Menu, Role, Post, Param])
+const models = TypegooseModule.forFeature([
+  User,
+  Menu,
+  Role,
+  Post,
+  Param,
+  Novel,
+  Chapter,
+])
 
 @Global() // 标记为全局可见
 @Module({

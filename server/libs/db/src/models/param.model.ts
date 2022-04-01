@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { modelOptions, Prop, Ref } from '@typegoose/typegoose'
+import { modelOptions, Prop } from '@typegoose/typegoose'
 
 @modelOptions({
   schemaOptions: {

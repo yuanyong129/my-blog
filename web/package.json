@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "axios": "^0.26.1",
+    "dayjs": "^1.11.0",
     "path": "^0.12.7",
     "pubsub-js": "^1.9.4",
     "react": "^17.0.2",

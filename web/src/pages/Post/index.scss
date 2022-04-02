@@ -28,10 +28,6 @@ $post-bg-color: rgba(255,255,255, 1);
       .info{
         padding: 10px;
         border-radius: 3px;
-        background-color: $post-bg-color;
-        &:hover{
-          box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .3);
-        }
         .info-name{
           font-size: 24px;
           text-align: center;
@@ -56,9 +52,6 @@ $post-bg-color: rgba(255,255,255, 1);
         padding: 10px;
         box-sizing: border-box;
         background-color: $post-bg-color;
-        &:hover{
-          box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .6);
-        }
         // @media screen and (max-width: 720px) {
         //   display: none;
         // }
@@ -78,9 +71,6 @@ $post-bg-color: rgba(255,255,255, 1);
       // text-indent: 10px;
       padding: 0 10px;
       cursor: pointer;
-      &:hover{
-        box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .3);
-      }
       &.active{
         background-color: chocolate;
       }
@@ -90,9 +80,6 @@ $post-bg-color: rgba(255,255,255, 1);
       width: 63%;
       height: fit-content;
       padding: 10px;
-      &:hover{
-        box-shadow: 0 2px 16px 0 rgba(0, 0, 0, .6);
-      }
       @media screen and (max-width: 720px) {
         width: 100%;
         margin-top: 20px;

@@ -5,6 +5,7 @@ import Home from '@/pages/Home'
 import Post from '@/pages/Post'
 import Novel from '@/pages/Novel'
 import About from '@/pages/About'
+import PostDetails from '@/pages/Post/PostDetails'
 // const Post = lazy(() => import('@/pages/Post'))
 
 export default class ContentView extends Component {
@@ -20,7 +21,7 @@ export default class ContentView extends Component {
               { <Home /> }
             </Suspense>}></Route>
             <Route path="blog" element={<Post />}></Route>
-            <Route path="blogdetails" element={lazy(() => import('@/pages/Post/PostDetails'))}></Route>
+            <Route path="blogdetails" element={<PostDetails />}></Route>
             <Route path="novel" element={<Novel />}></Route>
             <Route path="about" element={<About />}></Route>
         </Routes>

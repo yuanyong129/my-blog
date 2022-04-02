@@ -3,13 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import Avatar from '@/components/Avatar'
 import Tag from '@/components/Tag'
 import PostItem from './PostItem'
-// import { getPosts, getParams } from '@/api'
+import { getPostsApi, getParamsApi } from '@/api'
+import { Post, Param } from '@/types'
 import { PARAM_OPTIONS } from '@/utils'
 import './index.scss'
 
 export default (() => {
 
-  const [posts, setPosts] = useState<any[]>([])
+  const [posts, setPosts] = useState<Post[]>([])
   const [tags, setTags] = useState<any[]>([])
   const [types, setTypes] = useState<any[]>([])
   const [postTotal, setPostTotal] = useState<number>(0)
@@ -47,12 +48,8 @@ export default (() => {
   // 获取所有帖子
   const getPosts = async() => {
     try {
-      // const { data: { list, total, totalAll }} = await getPosts(this.searchParams)
-      // this.setState({
-      //   posts: list,
-      //   postTotal: total,
-      //   postCount: totalAll
-      // })
+      const { data } = await getPostsApi(searchParams)
+      setPosts(data.list)
     } catch (error) {
      console.log('获取所有帖子失败') 
     }
@@ -79,13 +76,13 @@ export default (() => {
 
   useEffect(() => {
     init()
-  })
+  }, [])
   
   return (
     <div data-component="post">
       <div className="post-wrap">
         <div className="infos">
-          <div className="info box-shadow">
+          <div className="info fluent-card">
             <div style={{ textAlign: 'center' }}>
               <Avatar />
             </div>
@@ -104,7 +101,7 @@ export default (() => {
               </div>
             </div>
           </div>
-          <div className="classify box-shadow">
+          <div className="classify fluent-card">
             <div className="title">&nbsp;&nbsp;&nbsp;&nbsp;分类</div>
             <div style={{ marginTop: '10px' }}>
               <div className={`classify-item ${searchParams.type ? '' : 'active'}`} onClick={() => search({type:'', tag: ''})}>全部</div>
@@ -118,7 +115,7 @@ export default (() => {
                 </div>)}
             </div>
           </div>
-          <div className="tags box-shadow">
+          <div className="tags fluent-card">
             <div className="title">&nbsp;&nbsp;&nbsp;&nbsp;标签</div>
             <div style={{ marginTop: '10px' }}>
               <Tag title='全部' bgColor="#acb9f2" openSelect={true} currentTag={searchParams.tag} ownTag='' onClick={() => search({type: '', tag: ''})} />
@@ -140,7 +137,7 @@ export default (() => {
         </div>
         {
           posts.length > 0 ?
-          <div className="posts box-shadow">
+          <div className="posts fluent-card">
             {
               posts.map(post =>
                 <PostItem
@@ -149,7 +146,7 @@ export default (() => {
                   key={post._id}
                   tags={post.tags}
                   title={post.title}
-                  onClick={() => navigate('/blogdetails', post)}
+                  onClick={() => navigate('/blogdetails', { state: post })}
                 />)
             }
             <div style={{textAlign: 'center'}}>
@@ -161,7 +158,7 @@ export default (() => {
                 onChange={this.pagiChange} /> */}
             </div>
           </div> :
-          <div className="no-posts box-shadow">暂无数据···</div>
+          <div className="no-posts fluent-card">暂无数据···</div>
         }
         
       </div>

@@ -5,6 +5,8 @@ export interface Post {
   content: string
   type: Param
   tags: Param[]
+  createdAt: string
+  updatedAt: string
 }
 
 export interface Param {
@@ -12,4 +14,6 @@ export interface Param {
   typeId: number
   title: string
   remark: string
+  createdAt: string
+  updatedAt: string
 }

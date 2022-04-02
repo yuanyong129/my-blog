@@ -1,12 +1,14 @@
 /* 全局样式 */
+@import './fluent.design.scss';
+
 @font-face {
   font-family: 'PPT';
   src: url('@/assets/font/PPT.ttf') format('truetype');
 }
 
 body {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   margin: 0;
   overflow: hidden;
   font-family: 'PPT', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',

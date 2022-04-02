@@ -1,14 +1,13 @@
 import  { FC } from 'react'
 import { marked } from 'marked'
+import { useLocation } from 'react-router-dom'
 import './index.scss'
 
-interface PropsType {
-  location: any
-}
 
-export default (({
-  location
-}) => {
+export default (() => {
+
+  const location: any = useLocation()
+
   return (
     <div data-component="post-details" className="box-shadow">
       <div className="post-content-wrap">
@@ -19,4 +18,4 @@ export default (({
       </div>
     </div>
   )
-}) as FC<PropsType>
+}) as FC

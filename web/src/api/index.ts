@@ -1,4 +1,20 @@
-import http from '../utils/http'
+import { http } from '@/utils'
+import { Post, Param } from '@/types'
 
-// export const getPosts = params => http.get('post', { params }) // 获取帖子
-// export const getParams = params => http.get('params', { params }) // 获取参数
+export const getPostsApi = (params: any) => 
+  http<{
+    list: Post[]
+    total: number
+    totalAll: number
+  }>({
+    url: 'post',
+    method: 'GET',
+    params
+  }) // 获取帖子
+
+export const getParamsApi = (params: any) => 
+  http<Param[]>({ 
+    url:'params',
+    method: 'GET',
+    params
+  }) // 获取参数

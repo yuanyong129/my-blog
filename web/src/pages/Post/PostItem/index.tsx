@@ -15,7 +15,7 @@ export default (({
   title, tags, type, createdAt, onClick
 }) => {
   return (
-    <div data-component="post-item" onClick={onClick}>
+    <div data-component="post-item" className='fluent-card' onClick={onClick}>
       <div>{tags.map(tag => <Tag key={tag._id} title={tag.title} bgColor="#FF9613" />)}</div>
       <div className="p-title">
         {title}&nbsp;&nbsp;&nbsp;&nbsp;

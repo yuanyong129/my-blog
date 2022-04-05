@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom'
 import Card from './components/Card'
 import dayjs from 'dayjs'
 import Avatar from '@/components/Avatar'
-// import { getPosts } from '@/api'
+import { getPostsApi } from '@/api'
 import './index.scss'
 
 export default (() => {
@@ -19,14 +19,12 @@ export default (() => {
   const navigate = useNavigate()
 
   const init = async() => {
-    // try {
-    //   const { data: { list } } = await getPosts({ page: 1, size: 4 })
-    //   this.setState({
-    //     posts: list
-    //   })
-    // } catch (error) {
-    //   console.log('初始化首页失败', error)
-    // }
+    try {
+      const { data: { list } } = await getPostsApi({ page: 1, size: 4 })
+      setPosts(list)
+    } catch (error) {
+      console.log('初始化首页失败', error)
+    }
   }
 
   useEffect(() => {
@@ -34,7 +32,7 @@ export default (() => {
   }, [])
 
   return (
-    <div data-component="home">
+    <div data-component="home" style={{ boxSizing: 'border-box' }}>
       <div className="up">
         <Avatar />
         <div className="my-intro">
@@ -58,7 +56,7 @@ export default (() => {
                 tags={post.tags}
                 type={post.type? post.type.title: null}
                 createdAt={dayjs(post.createdAt).format('YYYY-MM-DD')}
-                onClick={() => navigate('/blogdetails', post)}
+                onClick={() => navigate('/blogdetails', { state: post })}
               />
             ))
           }

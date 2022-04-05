@@ -1,13 +1,8 @@
 [data-component="post-item"]{
   border-radius: 5px;
   padding: 15px;
-  margin: 10px 0;
-  background-color: rgba(245, 245, 245, .5);
+  margin-bottom: 15px;
   cursor: pointer;
-  // &:hover{
-  //   box-shadow: 0 1px 10px 0 rgba(0, 0, 0, .1);
-  // }
-  border: 1px solid rgba(34, 34, 34, .2);
   .p-title{
     text-indent: 10px;
     font-size: 26px;

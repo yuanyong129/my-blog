@@ -1,14 +1,14 @@
 [data-component="about"]{
   width: 960px;
   margin: 20px auto;
-  border-radius: 3px;
-  background-color: rgb(255,255,255);
   padding: 20px;
   text-align: center;
+  box-sizing: border-box;
   .hidden{
     width: 400px;
     margin: 0 auto;
     background-color: skyblue;
+    color: skyblue;
     &:hover{
       color: white;
     }
@@ -17,7 +17,7 @@
 
 @media screen and (max-width: 720px) {
   [data-component="about"]{
-    width: 96%;
+    width: 90%;
     .hidden{
       width: 100%;
     }

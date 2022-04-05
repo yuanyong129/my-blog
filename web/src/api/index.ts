@@ -3,8 +3,8 @@ import { Post, Param } from '@/types'
 
 export const getPostsApi = (params: any) => 
   http<{
-    list: Post[]
-    total: number
+    list: Post[],
+    total: number,
     totalAll: number
   }>({
     url: 'post',
@@ -13,7 +13,10 @@ export const getPostsApi = (params: any) =>
   }) // 获取帖子
 
 export const getParamsApi = (params: any) => 
-  http<Param[]>({ 
+  http<{
+    list: Param[],
+    total: number
+  }>({ 
     url:'params',
     method: 'GET',
     params

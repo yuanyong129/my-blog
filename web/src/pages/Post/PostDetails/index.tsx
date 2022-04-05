@@ -1,21 +1,17 @@
 import  { FC } from 'react'
 import { marked } from 'marked'
 import { useLocation } from 'react-router-dom'
-import './index.scss'
-
 
 export default (() => {
 
   const location: any = useLocation()
 
   return (
-    <div data-component="post-details" className="box-shadow">
-      <div className="post-content-wrap">
-        <div className="post-title">
-          {location.state.title}
-        </div>
-        <div className="post-article" dangerouslySetInnerHTML={{__html: marked(location.state.content)}}></div>
+    <div data-component="post-details" className="fluent-card">
+      <div style={{ textAlign: 'center',fontSize: '32px', padding: '15px' }}>
+        {location.state.title}
       </div>
+      <div style={{ padding: '15px' }} dangerouslySetInnerHTML={{__html: marked(location.state.content)}}></div>
     </div>
   )
 }) as FC

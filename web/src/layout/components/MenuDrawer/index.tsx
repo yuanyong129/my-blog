@@ -9,7 +9,7 @@ import './index.scss'
 export default (() => {
 
   const [ drawerStyle, setDrawerStyle ] = useState<CSSProperties>({
-    top: '-100vh',
+    top: '-120vh',
     opacity: 0
   })
   let pubsubToken: string
@@ -19,7 +19,7 @@ export default (() => {
     if (!collapsed) {
       setDrawerStyle({ top: '0', opacity: 1 })
     } else {
-      setDrawerStyle({ top: '-100vh', opacity: 0 })
+      setDrawerStyle({ top: '-120vh', opacity: 0 })
     }
   }
   // 点击菜单

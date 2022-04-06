@@ -1,6 +1,9 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+import { useRouter, Router } from 'vue-router'
 import { NForm, NFormItem, NInput, NButton, FormInst, useMessage } from 'naive-ui'
+
+const router: Router = useRouter()
 
 const loginForm = ref({
   username: '',
@@ -13,6 +16,7 @@ const message = useMessage()
 const handleValidateClick = () => {
   console.log(loginForm.value)
   message.success('success')
+  router.push('/')
 }
 </script>
 

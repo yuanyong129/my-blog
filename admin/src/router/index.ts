@@ -1,7 +1,8 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Login from '@/views/auth/Login/index.vue'
+import Login from '@/views/auth/Login.vue'
 import Layout from '@/layout/index.vue'
-import { nextTick } from 'vue'
+import Home from '@/views/home/Home.vue'
+
 const routes: RouteRecordRaw[] = [
   {
     path: '/login',
@@ -13,7 +14,13 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/index',
-    component: Layout
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: Home
+      }
+    ]
   }
 ]
 

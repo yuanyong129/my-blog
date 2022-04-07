@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { getToken } from '@/utils'
 import Login from '@/views/auth/Login.vue'
 import Layout from '@/layout/index.vue'
 import Home from '@/views/home/Home.vue'
@@ -29,9 +30,14 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  console.log('router guard')
-  next()
+router.beforeEach((to, from) => {
+  const token: string = getToken()
+  if (token) {
+    if(to.path === '/login')
+      return '/'
+  } else {
+    return '/login'
+  }
 })
 
 export default router

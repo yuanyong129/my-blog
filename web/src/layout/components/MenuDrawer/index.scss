@@ -1,5 +1,12 @@
 $menu-bg-color: white;
 
+@supports ((-webkit-backdrop-filter: saturate(180%) blur(20px)) or (backdrop-filter: saturate(180%) blur(20px))) {
+  [data-component="menu-drawer"] {
+    background: transparent !important;
+    backdrop-filter: saturate(100%) blur(6px);
+  }
+}
+
 [data-component="menu-drawer"]{
   position: absolute;
   z-index: 999;
@@ -7,9 +14,8 @@ $menu-bg-color: white;
   height: 100%;
   top: -100%;
   display: grid;
+  background: rgba(255,255,255, .92);
   grid-template-columns: 32% 36% 32%;
-  background: transparent;
-  backdrop-filter: saturate(100%) blur(6px);
   transition: top .3s, opacity .2s;
   &::after{
     width: 100%;
@@ -29,7 +35,7 @@ $menu-bg-color: white;
     color: rgb(121, 85, 72);
     font-size: 24px;
     display: block;
-    .en{
+    .en {
       font-size: 14px;
       font-weight: 700;
     }
@@ -43,7 +49,7 @@ $menu-bg-color: white;
     color: rgb(121, 85, 72);
     font-size: 18px;
     display: block;
-    .en{
+    .en {
       font-size: 10px;
       font-weight: 700;
     }

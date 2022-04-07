@@ -1,0 +1,7 @@
+:root{
+  --navbar-height: 64px;
+}
+
+:export {
+  navbarHeight: var(--navbar-height);
+}

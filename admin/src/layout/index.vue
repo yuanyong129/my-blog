@@ -2,12 +2,12 @@
 import { ref } from 'vue'
 import { NLayout, NLayoutSider, NLayoutContent, NLayoutFooter, NLayoutHeader } from 'naive-ui'
 import MyMenu from './components/Menu.vue'
+import Logo from './components/Logo.vue'
 
 const collapsed = ref<boolean>(false)
 
 const onCollapsed = (value: boolean) => {
   collapsed.value = !collapsed.value
-  // console.log('param', value, 'bind', collapsed.value)
 }
 
 </script>
@@ -17,13 +17,14 @@ const onCollapsed = (value: boolean) => {
   <n-layout-sider
     :collapsed="collapsed"
     collapse-mode="width"
-    :collapsed-width="50"
+    :collapsed-width="64"
     :width="240"
     bordered
     show-trigger="arrow-circle"
     :native-scrollbar="false"
     content-style="height: 100%;"
     :on-update:collapsed="onCollapsed">
+    <logo :collapsed="collapsed" />
     <my-menu />
   </n-layout-sider>
   <n-layout>

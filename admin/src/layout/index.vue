@@ -3,6 +3,7 @@ import { ref } from 'vue'
 import { NLayout, NLayoutSider, NLayoutContent, NLayoutFooter, NLayoutHeader } from 'naive-ui'
 import MyMenu from './components/Menu.vue'
 import Logo from './components/Logo.vue'
+import Navi from './components/Navi.vue'
 
 const collapsed = ref<boolean>(false)
 
@@ -28,7 +29,9 @@ const onCollapsed = (value: boolean) => {
     <my-menu />
   </n-layout-sider>
   <n-layout>
-    <n-layout-header bordered style="height: 64px;">这是导航条</n-layout-header>
+    <n-layout-header bordered style="height: 64px;">
+      <Navi />
+    </n-layout-header>
     <n-layout-content style="height: calc(100vh - 101px);"  :native-scrollbar="false" content-style="padding: 24px;">
       <router-view />
     </n-layout-content>

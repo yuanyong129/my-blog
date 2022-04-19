@@ -3,22 +3,32 @@ import { ref } from 'vue'
 import { useRouter, Router } from 'vue-router'
 import { NForm, NFormItem, NInput, NButton, FormInst, useMessage } from 'naive-ui'
 import { setToken } from '@/utils'
+import { LoginForm } from '@/types'
+import { login } from '@/api'
 
 const router: Router = useRouter()
 
-const loginForm = ref({
+const loginForm = ref<LoginForm>({
   username: '',
   password: ''
 })
 
 const formRef = ref<FormInst | null>(null)
 const rules = {}
-const message = useMessage()
-const handleValidateClick = () => {
-  console.log(loginForm.value)
-  message.success('success')
-  setToken('aaaa')
-  router.push('/')
+const $message = useMessage()
+const handleValidateClick = async () => {
+  try {
+    console.log(loginForm.value)
+    const { code, data, message } = await login(loginForm.value)
+    if(code === 200) {
+      setToken(data)
+      router.push('/')
+    } else {
+      $message.error(message)
+    }
+  } catch (err) {
+    console.log('登录失败', err)
+  }
 }
 </script>
 

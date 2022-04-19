@@ -1,93 +1,29 @@
 <script lang="ts" setup>
-import { h, Component } from 'vue'
-import { NMenu, NIcon, useMessage, MenuOption } from 'naive-ui'
+import { h } from 'vue'
+import { NMenu, useMessage, MenuOption } from 'naive-ui'
 import {
   BookOutline as BookIcon,
   PersonOutline as PersonIcon,
   WineOutline as WineIcon
 } from '@vicons/ionicons5'
-
-function renderIcon (icon: Component) {
-  return () => h(NIcon, null, { default: () => h(icon) })
-}
+import { renderIcon } from '@/utils'
+import { RouterLink } from 'vue-router';
 
 const message  = useMessage()
 
 const menuOptions: MenuOption[] = [
   {
-    label: '且听风吟',
-    key: 'hear-the-wind-sing',
+    label: () => h(RouterLink, { to: { path: '/index' } }, { default: () => '首页' }),
+    key: 'index',
     icon: renderIcon(BookIcon)
   },
   {
-    label: '1973年的弹珠玩具',
-    key: 'pinball-1973',
-    icon: renderIcon(BookIcon),
-    disabled: true,
-    children: [
-      {
-        label: '鼠',
-        key: 'rat'
-      }
-    ]
-  },
-  {
-    label: '寻羊冒险记',
-    key: 'a-wild-sheep-chase',
-    icon: renderIcon(BookIcon),
-    disabled: true
-  },
-  {
-    label: '舞，舞，舞',
-    key: 'dance-dance-dance',
-    icon: renderIcon(BookIcon),
-    children: [
-      {
-        type: 'group',
-        label: '人物',
-        key: 'people',
-        children: [
-          {
-            label: '叙事者',
-            key: 'narrator',
-            icon: renderIcon(PersonIcon)
-          },
-          {
-            label: '羊男',
-            key: 'sheep-man',
-            icon: renderIcon(PersonIcon)
-          }
-        ]
-      },
-      {
-        label: '饮品',
-        key: 'beverage',
-        icon: renderIcon(WineIcon),
-        children: [
-          {
-            label: '威士忌',
-            key: 'whisky'
-          }
-        ]
-      },
-      {
-        label: '食物',
-        key: 'food',
-        children: [
-          {
-            label: '三明治',
-            key: 'sandwich'
-          }
-        ]
-      },
-      {
-        label: '过去增多，未来减少',
-        key: 'the-past-increases-the-future-recedes'
-      }
-    ]
+    label: () => h(RouterLink, { to: {path: '/post'} }, { default: () => '我的博客' }),
+    key: 'post',
+    icon: renderIcon(BookIcon)
   }
 ]
-const defaultExpandedKeys = ['dance-dance-dance', 'food']
+const defaultExpandedKeys = ['', 'food']
 const handleUpdateExpandedKeys = (keys: string[]) => {
   message.info('[onUpdate:expandedKeys]: ' + JSON.stringify(keys))
 }
@@ -96,6 +32,7 @@ const handleUpdateExpandedKeys = (keys: string[]) => {
 <template>
   <n-menu
     :options="menuOptions"
+    :collapsed-width="64"
     :default-expanded-keys="defaultExpandedKeys"
     @update:expanded-keys="handleUpdateExpandedKeys"
   />

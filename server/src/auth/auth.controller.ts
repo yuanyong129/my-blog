@@ -13,6 +13,7 @@ import { JwtService } from '@nestjs/jwt'
 import { Role } from '@libs/db/models/role.model'
 import { Menu } from '@libs/db/models/menu.model'
 import { AuthService } from './auth.service'
+import { ResponseType } from 'src/types/global'
 
 export class LoginDto {
   @ApiProperty({ description: '用户名' })
@@ -47,10 +48,14 @@ export class AuthController {
   @Post('login')
   @ApiOperation({ summary: '登录' })
   @UseGuards(AuthGuard('local'))
-  async login(@Body() dto: LoginDto, @Req() req) {
+  async login(
+    @Body() dto: LoginDto,
+    @Req() req,
+  ): Promise<ResponseType<string>> {
     return {
-      state: 200,
-      token: this.jwtService.sign(String(req.user._id)),
+      code: 200,
+      data: this.jwtService.sign(String(req.user._id)),
+      msg: '登录成功！',
     }
   }
 

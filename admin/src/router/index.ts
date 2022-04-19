@@ -3,6 +3,7 @@ import { getToken } from '@/utils'
 import Login from '@/views/auth/Login.vue'
 import Layout from '@/layout/index.vue'
 import Home from '@/views/home/Home.vue'
+import Post from '@/views/post/Post.vue'
 
 const routes: RouteRecordRaw[] = [
   {
@@ -20,6 +21,16 @@ const routes: RouteRecordRaw[] = [
       {
         path: '',
         component: Home
+      }
+    ]
+  },
+  {
+    path: '/post',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: Post
       }
     ]
   }

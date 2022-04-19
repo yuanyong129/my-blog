@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { defineProps, CSSProperties } from 'vue'
+import { CSSProperties } from 'vue'
 import { variables } from '@/styles'
 interface PropsType {
   collapsed: boolean

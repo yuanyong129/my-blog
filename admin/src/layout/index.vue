@@ -1,9 +1,11 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { NLayout, NLayoutSider, NLayoutContent, NLayoutFooter, NLayoutHeader } from 'naive-ui'
+import { NLayout, NLayoutSider, NLayoutContent, NLayoutFooter, NLayoutHeader, useMessage } from 'naive-ui'
 import MyMenu from './components/Menu.vue'
 import Logo from './components/Logo.vue'
 import Navi from './components/Navi.vue'
+
+window.$message = useMessage()
 
 const collapsed = ref<boolean>(false)
 
@@ -30,7 +32,7 @@ const onCollapsed = (value: boolean) => {
   </n-layout-sider>
   <n-layout>
     <n-layout-header bordered style="height: 64px;">
-      <Navi />
+      <Navi @click="onCollapsed" />
     </n-layout-header>
     <n-layout-content style="height: calc(100vh - 101px);"  :native-scrollbar="false" content-style="padding: 24px;">
       <router-view />

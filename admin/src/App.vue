@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { NMessageProvider } from 'naive-ui'
+import AppProvider from './components/AppProvider.vue'
 </script>
 
 <template>
-  <n-message-provider>
+  <app-provider>
     <router-view></router-view>
-  </n-message-provider>
+  </app-provider>
 </template>
 
 <style lang="scss">

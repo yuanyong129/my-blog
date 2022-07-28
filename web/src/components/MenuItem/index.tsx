@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { NavLink } from 'react-router-dom'
 import './index.scss'
 
-interface PropsType {
+interface IPropsType {
   to: string
   text: string
 }
@@ -19,4 +19,4 @@ export default (({
       <div className="triangle"></div>
     </div>
   )
-}) as FC<PropsType>
+}) as FC<IPropsType>

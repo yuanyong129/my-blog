@@ -13,7 +13,7 @@ import { JwtService } from '@nestjs/jwt'
 import { Role } from '@libs/db/models/role.model'
 import { Menu } from '@libs/db/models/menu.model'
 import { AuthService } from './auth.service'
-import { ResponseType } from 'src/types/global'
+import { IResponseType } from 'libs/types/global'
 
 export class LoginDto {
   @ApiProperty({ description: '用户名' })
@@ -35,13 +35,13 @@ export class AuthController {
 
   @Post('register')
   @ApiOperation({ summary: '注册' })
-  async register(@Body() dto: User) {
+  async register(@Body() dto: User): Promise<IResponseType<null>> {
     const res = await this.userModel.findOne({ username: dto.username })
     if (res) {
-      return { state: 501, message: '用户名已存在!' }
+      return { code: 501, data: null, msg: '用户名已存在!' }
     } else {
       await this.userModel.create(dto)
-      return { state: 200, message: '注册成功!' }
+      return { code: 200, data: null, msg: '注册成功!' }
     }
   }
 
@@ -51,7 +51,7 @@ export class AuthController {
   async login(
     @Body() dto: LoginDto,
     @Req() req,
-  ): Promise<ResponseType<string>> {
+  ): Promise<IResponseType<string>> {
     return {
       code: 200,
       data: this.jwtService.sign(String(req.user._id)),
@@ -71,7 +71,7 @@ export class AuthController {
   @ApiOperation({ summary: '获取权限菜单' })
   @UseGuards(AuthGuard('jwt'))
   @ApiBearerAuth()
-  async getMenu(@Req() { user }) {
+  async getMenu(@Req() { user }): Promise<IResponseType<Menu[]>> {
     if (user.roleId) {
       const { menuId } = await this.roleModel.findOne({
         _id: String(user.roleId),
@@ -84,13 +84,15 @@ export class AuthController {
       })
       const data = this.authService.createPremissonMenu(menuList, menuId)
       return {
-        state: 200,
+        code: 200,
         data,
+        msg: '成功！',
       }
     } else {
       return {
-        state: 200,
+        code: 500,
         data: [],
+        msg: '失败！',
       }
     }
   }

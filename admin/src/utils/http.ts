@@ -1,25 +1,22 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
 import { url } from '@/config'
 import { getToken } from './auth'
+import { IResponseType } from '@/types'
 
 export const http = axios.create({
   baseURL: url,
   timeout: 3 * 1000
 })
 
-type MyResponseType<T = any> = {
-  code: number
-  message: string
-  data: T
-}
 
-const request = async<T = any> (config: AxiosRequestConfig): Promise<MyResponseType<T>> => {
+
+const request = async<T = any> (config: AxiosRequestConfig): Promise<IResponseType<T>> => {
   try {
-    const { data } = await http.request<MyResponseType<T>>(config)
+    const { data } = await http.request<IResponseType<T>>(config)
     return data
   } catch (err: any) {
-    const message = err.message || '请求失败'
-    return { code: -1, message, data: null as any }
+    const msg = err.message || '请求失败'
+    return { code: -1, msg, data: null as any }
   }
 }
 
@@ -45,7 +42,7 @@ http.interceptors.response.use(
     if (res.status === 200 || res.status === 201) {
       return res
     } else {
-      window.$message.error(res.data.message)
+      window.$message.error(res.data.msg)
       return res
     }
   },

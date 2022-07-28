@@ -1,10 +1,11 @@
-import { Component } from 'react'
+import { Component, FC, CSSProperties } from 'react'
+
 // import Logo from './components/Logo'
 import NavBar from './components/NavBar'
 // import Trigger from '@/components/Trigger'
 import MeunDrawer from './components/MenuDrawer'
 import ContentView from './components/ContentView'
-// import MenuItem from '@/components/MenuItem'
+import MenuItem from '@/components/MenuItem'
 import './index.scss'
 
 export default class Layout extends Component {
@@ -22,3 +23,7 @@ export default class Layout extends Component {
     )
   }
 }
+
+
+
+

@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-export interface ResponseType<T = any> {
+/** 自定义返回类型 */
+export interface IResponseType<T = any> {
   code: number
   msg: string
   data: T

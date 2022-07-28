@@ -1,6 +1,17 @@
-export { default as Avatar } from './Avatar'
-export { default as CommonPage } from './CommonPage'
-export { default as Trigger} from './Trigger'
-export { default as Tag } from './Tag'
-export { default as Loading } from './Loading'
-export { default as MenuItem } from './MenuItem'
+import Avatar from './Avatar'
+import CommonPage from './CommonPage'
+import Trigger from './Trigger'
+import Tag from './Tag'
+import Loading from './Loading'
+import MenuItem from './MenuItem'
+import Background from './Background'
+
+export const useGlobalComponents = () => ({
+  Avatar,
+  CommonPage,
+  Trigger,
+  Tag,
+  Loading,
+  MenuItem,
+  Background
+})

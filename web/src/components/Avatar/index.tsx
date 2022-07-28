@@ -1,7 +1,7 @@
 import { avatarDefaultImage } from '@/assets'
 import { CSSProperties, FC } from 'react'
 
-interface PropsType {
+interface IProps {
   avatar?: string
 }
 
@@ -28,4 +28,4 @@ export default (({
       <img style={avatar_style} src={avatar || avatarDefaultImage} alt="头像-拉碧丝·罗赞贝尔克" />
     </div>
   )
-}) as FC<PropsType>
+}) as FC<IProps>

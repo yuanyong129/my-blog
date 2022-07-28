@@ -1,9 +1,8 @@
-@import '../styles/variables.module.scss';
 .content {
   position: relative;
   overflow: auto;
   // flex: 1;
-  height: calc(100% - #{$navBarHeight});
+  height: calc(100% - var(--navbar-height));
 }
 .layout{
   // display: flex;

@@ -1,5 +1,3 @@
-$navBarHeight: 50px;
-
 :export {
-  navBarHeight: $navBarHeight;
+  navBarHeight: var(--navbar-height);
 }

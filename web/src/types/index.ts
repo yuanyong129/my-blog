@@ -1,15 +1,25 @@
-export interface Post {
+import { FC, Component, ReactNode } from 'react'
+
+// 导航配置
+export interface INavOptions {
+  href: string
+  children: ReactNode
+  en: string
+  component?: Component | FC
+}
+
+export interface IPost {
   _id?: string
   title: string
   author: string
   content: string
-  type: Param
-  tags: Param[]
+  type: IParam
+  tags: IParam[]
   createdAt: string
   updatedAt: string
 }
 
-export interface Param {
+export interface IParam {
   _id?: string
   typeId: number
   title: string

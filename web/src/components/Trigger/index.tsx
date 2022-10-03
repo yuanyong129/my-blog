@@ -3,14 +3,12 @@ import PubSub from 'pubsub-js'
 import { PUBSUB } from '@/utils'
 import './index.scss'
 
-interface PropsType {
+interface IProps {
   margin: string
-  color: string
 }
 
 export default (({
-  margin,
-  color
+  margin
 }) => {
   const [collapsed, setCollapsed] = useState<boolean>(true)
   let pubSubToken: any = null
@@ -35,9 +33,9 @@ export default (({
       data-component="trigger" onClick={onTrigger}
       style={{ margin: margin || '0' }}
     >
-      <span style={{backgroundColor: color || '#ffffff'}}></span>
-      <span style={{backgroundColor: color || '#ffffff'}}></span>
-      <span style={{backgroundColor: color || '#ffffff'}}></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   )
-}) as FC<PropsType>
+}) as FC<IProps>

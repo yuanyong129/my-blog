@@ -11,6 +11,7 @@
   background: rgba(255, 255, 255, 0.72);
   backdrop-filter: saturate(180%) blur(18px);
   border-bottom: 1px solid var(--main-color);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12);
   &:hover{
     border-bottom: 1px solid var(--main-hover-color);
   }
@@ -53,6 +54,7 @@
     padding: 0 20px 0 55px;
     box-sizing: border-box;
     color: var(--main-color);
+    white-space: nowrap;
     &:hover{
       color: var(--main-hover-color);
       .hoge{

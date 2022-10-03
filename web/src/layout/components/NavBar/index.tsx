@@ -2,22 +2,22 @@ import { FC, CSSProperties, ReactNode } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
 import { useSvg } from '@/assets'
 import { useGlobalComponents } from '@/components'
+import { useOptions } from '@/common'
 import './index.scss'
 
 const { Trigger } = useGlobalComponents()
+const { navOptions } = useOptions()
 
 export default (() => {
   return (
     <div data-component="navbar">
       <div className='web-nav'>
         <Logo />
-        <Link to='/blog' children='我的博客' />
-        <Link to='/blog' children='我的建模' />
-        <Link to='/blog' children='我的小说' />
+        { navOptions.map(item => <Link key={item.href} to={item.href} children={item.children} />) }
       </div>
       <div className="phone-nav flex-row">
+        <Trigger margin="0 10px" />
         <Logo />
-        <Trigger color="skyblue" margin="0 10px" />
       </div>
     </div>
   )

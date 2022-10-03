@@ -1,9 +1,11 @@
 import { FC, useState, useEffect, CSSProperties } from 'react'
 import { NavLink } from 'react-router-dom'
 import PubSub from 'pubsub-js'
+import { useOptions } from '@/common'
 import { PUBSUB } from '@/utils'
 import './index.scss'
 
+const { navOptions }  = useOptions()
 
 let pubsubToken: string
 
@@ -40,26 +42,14 @@ export default (() => {
 
   return (
     <div data-component="menu-drawer" style={drawerStyle}>
-      <NavLink className="my-link" to='/' onClick={clickMenu}>
-        <div>首页</div>
-        <div className="en">HOME</div>
-      </NavLink>
-      <NavLink className="my-link" to='/blog' onClick={clickMenu}>
-        <div>我的博客</div>
-        <div className="en">MY BLOG</div>
-      </NavLink>
-      <NavLink className="my-link" to='/novel' onClick={clickMenu}>
-        <div>我的小说</div>
-        <div className="en">MY LIGHT NOVEL</div>
-      </NavLink>
-      <NavLink className="my-link" to='/origami' onClick={clickMenu}>
-        <div>我的折纸</div>
-        <div className="en">MY ORIGAMI</div>
-      </NavLink>
-      <NavLink className="my-link" to='/about' onClick={clickMenu}>
-        <div>关于</div>
-        <div className="en">ABOUT</div>
-      </NavLink>
+      {
+        navOptions?.map(item => (
+          <NavLink className="my-link" to={item.href} onClick={clickMenu}>
+            <div>{item.children}</div>
+            <div className="en">{item.en}</div>
+          </NavLink>
+        ))
+      }
     </div>
   )
  

@@ -1,11 +1,10 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { NLayout, NLayoutSider, NLayoutContent, NLayoutFooter, NLayoutHeader, useMessage } from 'naive-ui'
-import MyMenu from './components/Menu.vue'
-import Logo from './components/Logo.vue'
-import Navi from './components/Navi.vue'
-
-window.$message = useMessage()
+import { ref } from 'vue';
+import { Message } from '@arco-design/web-vue'
+import Menu from './components/Menu.vue';
+import Logo from './components/Logo.vue';
+import Navi from './components/Navi.vue';
+import Breadcrumb from './components/Breadcrumb.vue';
 
 const collapsed = ref<boolean>(false)
 
@@ -16,28 +15,50 @@ const onCollapsed = (value: boolean) => {
 </script>
 
 <template>
-<n-layout has-sider style="width: 100%; height: 100%; background-color: rgba(red, green, blue, 0.2);">
-  <n-layout-sider
-    :collapsed="collapsed"
-    collapse-mode="width"
-    :collapsed-width="64"
-    :width="240"
-    bordered
-    show-trigger="arrow-circle"
-    :native-scrollbar="false"
-    content-style="height: 100%;"
-    :on-update:collapsed="onCollapsed">
-    <logo :collapsed="collapsed" />
-    <my-menu />
-  </n-layout-sider>
-  <n-layout>
-    <n-layout-header bordered style="height: 64px;">
-      <Navi @click="onCollapsed" />
-    </n-layout-header>
-    <n-layout-content style="height: calc(100vh - 101px);"  :native-scrollbar="false" content-style="padding: 24px;">
-      <router-view />
-    </n-layout-content>
-    <n-layout-footer bordered style="height: 36px; line-height: 36px; text-align: center">copyright © yuany 2021~Now</n-layout-footer>
-  </n-layout>
-</n-layout>
+  <a-layout class="layout">
+    <a-layout-sider
+      collapsible 
+      :collapsed="collapsed"
+      :width="240"
+      @collapse="onCollapsed">
+      <Logo :collapsed="collapsed" />
+      <Menu :collapsed="collapsed"></Menu>
+    </a-layout-sider>
+    <a-layout>
+      <a-layout-header class="layout-header">
+        <Navi @click="onCollapsed" />
+      </a-layout-header>
+      <a-layout>
+        <Breadcrumb />
+        <a-layout-content class="layout-content">
+          <router-view />
+        </a-layout-content>
+        <a-layout-footer class="layout-footer">
+          copyright © yuany 2021~Now
+        </a-layout-footer>
+      </a-layout>
+    </a-layout>
+  </a-layout>
 </template>
+
+<style lang="scss" scoped>
+.layout {
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.5);
+  .layout-header {
+    height: 64px;
+  }
+  .layout-content {
+    height: calc(100vh - 101px);
+    padding: 0px 10px 10px;
+    box-sizing: border-box;
+  }
+  .layout-footer {
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    background-color: var(--color-bg-3);
+  }
+}
+</style>

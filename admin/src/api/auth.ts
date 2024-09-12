@@ -1,7 +1,7 @@
 import { http } from '@/utils'
-import { LoginForm, Post } from '@/types'
+import { ILoginForm, IPost } from '@/types'
 
-export const login = (data: LoginForm) => 
+export const login = (data: ILoginForm) => 
   http<string>({
     url: 'auth/login',
     method: 'POST',
@@ -10,7 +10,7 @@ export const login = (data: LoginForm) =>
 
 export const getPostsApi = (params: any) => 
   http<{
-    list: Post[],
+    list: IPost[],
     total: number,
     totalAll: number
   }>({

@@ -1,14 +1,17 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
-import { url } from '@/config'
-import { getToken } from './auth'
-import { IResponseType } from '@/types'
+import axios, { 
+  AxiosResponse,
+  AxiosRequestConfig,
+  InternalAxiosRequestConfig
+} from 'axios';
+import { url } from '@/config';
+import { getToken } from './auth';
+import { IResponseType } from '@/types';
+import { Message } from '@arco-design/web-vue';
 
 export const http = axios.create({
   baseURL: url,
   timeout: 3 * 1000
 })
-
-
 
 const request = async<T = any> (config: AxiosRequestConfig): Promise<IResponseType<T>> => {
   try {
@@ -22,7 +25,7 @@ const request = async<T = any> (config: AxiosRequestConfig): Promise<IResponseTy
 
 // 请求拦截器
 http.interceptors.request.use(
-  (req: AxiosRequestConfig) => {
+  (req: InternalAxiosRequestConfig) => {
     if (req.url) {
       if(req.url.indexOf('login') < 0 && req.url.indexOf('register') < 0) {
         if(req.headers) {
@@ -42,13 +45,17 @@ http.interceptors.response.use(
     if (res.status === 200 || res.status === 201) {
       return res
     } else {
-      window.$message.error(res.data.msg)
+      Message.error(res.data.msg)
       return res
     }
   },
   (err: any) => {
-    const { message : errMsg } = err.response.data
-    console.log(errMsg)
+    const { statusCode, message } = err.response.data;
+    Message.error(message);
+    return {
+      code: statusCode,
+      msg: message
+    };
   }
 )
 

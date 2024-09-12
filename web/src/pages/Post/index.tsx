@@ -4,7 +4,7 @@ import Avatar from '@/components/Avatar'
 import Tag from '@/components/Tag'
 import PostItem from './PostItem'
 import { getPostsApi, getParamsApi } from '@/api'
-import { Post, Param } from '@/types'
+import { IPost, IParam } from '@/types'
 import { PARAM_OPTIONS } from '@/utils'
 import './index.scss'
 
@@ -17,7 +17,7 @@ const searchParams = {
 
 export default (() => {
 
-  const [posts, setPosts] = useState<Post[]>([])
+  const [posts, setPosts] = useState<IPost[]>([])
   const [tags, setTags] = useState<any[]>([])
   const [types, setTypes] = useState<any[]>([])
   const [postTotal, setPostTotal] = useState<number>(0)

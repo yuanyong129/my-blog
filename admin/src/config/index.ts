@@ -7,7 +7,7 @@ if (import.meta.env.MODE === 'production') {
   url = 'http://localhost:3080/blog/'
 } else {
   // 开发环境配置
-  url = 'http://localhost:3080/blog/'
+  url = '/blog'
 }
 
 export {

@@ -1,60 +1,95 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
-import { useRouter, Router } from 'vue-router'
-import { NForm, NFormItem, NInput, NButton, FormInst, useMessage } from 'naive-ui'
-import { setToken } from '@/utils'
-import { LoginForm } from '@/types'
-import { login } from '@/api'
+import { ref } from 'vue';
+import { useRouter, Router } from 'vue-router';
+import { FieldRule, Message } from '@arco-design/web-vue';
+import { setToken } from '@/utils';
+import { ILoginForm } from '@/types';
+import { login } from '@/api';
 
-const router: Router = useRouter()
+const router: Router = useRouter();
 
-const loginForm = ref<LoginForm>({
+const loginForm = ref<ILoginForm>({
   username: '',
   password: ''
-})
+});
 
-const formRef = ref<FormInst | null>(null)
-const rules = {}
-const $message = useMessage()
+const formRef = ref<any>(null);
+const rules = ref<Record<string, FieldRule | FieldRule[]>>({
+  username: { required: true, message: '请输入用户名', },
+  password: { required: true, min: 6, message: '请输入密码' },
+});
 
 const handleValidateClick = async () => {
   try {
-    console.log(loginForm.value)
-    const { code, data, msg } = await login(loginForm.value)
-    if(code === 200) {
-      setToken(data)
-      router.push('/')
-    } else {
-      $message.error(msg)
+    const valid = await formRef?.value.validate();
+    if(!valid) {
+      const { code, data, msg } = await login(loginForm.value);
+      if(code === 200) {
+        setToken(data);
+        router.push('/');
+      } else {
+        Message.error(msg);
+      }
     }
   } catch (err) {
-    console.log('登录失败', err)
+    console.log('登录失败', err);
   }
+}
+
+const handleReset = () => {
+  loginForm.value.username = '';
+  loginForm.value.password = '';
 }
 </script>
 
 <template>
-  <div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 100vh;">
-    <n-form
-      class="fluent-card"
-      style="width: 500px; padding: 30px; box-sizing: border-box;"
-      ref="formRef"
-      :model="loginForm"
-      :rules="rules"
-      size="medium"
-    >
+  <div class="login-page">
+    <a-card>
       <div style="text-align: center; padding: 10px; font-size: 24px;">空澄博客管理系统</div>
-      <n-form-item label="用户名" path="username">
-        <n-input v-model:value="loginForm.username" placeholder="请输入用户名" />
-      </n-form-item>
-      <n-form-item label="密码" path="password">
-        <n-input v-model:value="loginForm.password" placeholder="请输入密码" />
-      </n-form-item>
-      <div style="text-align: right;">
-        <n-button type="primary" secondary attr-type="button" @click="handleValidateClick">
-          登录
-        </n-button>
+      <a-divider margin="0" />
+      <a-form
+        class="login-form"
+        ref="formRef"
+        :model="loginForm"
+        :rules="rules"
+        size="medium"
+      >
+        <a-form-item label="用户名" field="username" :validate-trigger="['blur']">
+          <a-input v-model="loginForm.username" placeholder="请输入用户名" />
+        </a-form-item>
+        <a-form-item label="密码" field="password" :validate-trigger="['blur']">
+          <a-input v-model="loginForm.password" placeholder="请输入密码" />
+        </a-form-item>
+      </a-form>
+      <a-divider margin="10" />
+      <div class="login-btns">
+        <a-space>
+          <a-button type="primary" secondary attr-type="button" @click="handleValidateClick">
+            登录
+          </a-button>
+          <a-button @click="handleReset">重置</a-button>
+        </a-space>
       </div>
-    </n-form>
+    </a-card>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  .login-form {
+    width: 500px;
+    padding: 40px 30px 0px;
+    box-sizing: border-box;
+  }
+
+  .login-btns {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+</style>

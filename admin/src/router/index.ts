@@ -1,9 +1,9 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import { getToken } from '@/utils'
-import Login from '@/views/auth/Login.vue'
-import Layout from '@/layout/index.vue'
-import Home from '@/views/home/Home.vue'
-import Post from '@/views/post/Post.vue'
+import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router';
+import { getToken } from '@/utils';
+import Login from '@/views/auth/Login.vue';
+import Layout from '@/layout/index.vue';
+import Home from '@/views/home/Home.vue';
+import Post from '@/views/post/Post.vue';
 
 const routes: RouteRecordRaw[] = [
   {
@@ -33,7 +33,7 @@ const routes: RouteRecordRaw[] = [
         component: Post
       }
     ]
-  }
+  },
 ]
 
 const router = createRouter({

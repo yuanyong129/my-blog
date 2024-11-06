@@ -1,1 +1,1 @@
-export { useOptions } from './options'
+export { getOptions } from './options'

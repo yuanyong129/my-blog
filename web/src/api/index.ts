@@ -1,9 +1,9 @@
 import { http } from '@/utils'
-import { Post, Param } from '@/types'
+import { IPost, IParam } from '@/types'
 
-export const getPostsApi = (params: any) => 
+export const getPostsApi = (params: unknown) => 
   http<{
-    list: Post[],
+    list: IPost[],
     total: number,
     totalAll: number
   }>({
@@ -12,9 +12,9 @@ export const getPostsApi = (params: any) =>
     params
   }) // 获取帖子
 
-export const getParamsApi = (params: any) => 
+export const getParamsApi = (params: unknown = null) => 
   http<{
-    list: Param[],
+    list: IParam[],
     total: number
   }>({ 
     url:'params',

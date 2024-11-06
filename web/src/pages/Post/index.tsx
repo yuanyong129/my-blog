@@ -4,7 +4,7 @@ import Avatar from '@/components/Avatar'
 import Tag from '@/components/Tag'
 import PostItem from './PostItem'
 import { getPostsApi, getParamsApi } from '@/api'
-import { IPost, IParam } from '@/types'
+import { IPost } from '@/types'
 import { PARAM_OPTIONS } from '@/utils'
 import './index.scss'
 
@@ -20,7 +20,7 @@ export default (() => {
   const [posts, setPosts] = useState<IPost[]>([])
   const [tags, setTags] = useState<any[]>([])
   const [types, setTypes] = useState<any[]>([])
-  const [postTotal, setPostTotal] = useState<number>(0)
+  // const [setPostTotal] = useState<number>(0)
   const [postCount, setPostCount] = useState<number>(0)
   const [tagsTotal, setTagsTotal] = useState<number>(0)
 
@@ -44,9 +44,9 @@ export default (() => {
       const { data } = await getPostsApi(searchParams)
       setPosts(data.list)
       setPostCount(data.total)
-      setPostTotal(data.totalAll)
-    } catch (error) {
-     console.log('获取所有帖子失败') 
+      // setPostTotal(data.totalAll)
+    } catch (error: any) {
+     console.log('获取所有帖子失败', error);
     }
   }
   // 获取所有标签
@@ -57,19 +57,19 @@ export default (() => {
       setTags(list)
       setTagsTotal(total)
       setTypes(types)
-    } catch (err) {
-      console.log('获取所有标签失败')
+    } catch (err: any) {
+      console.log('获取所有标签失败', err)
     }
   } 
 
-  const pagingChange = (page: number) => {
-    searchParams.page = page
-    getPosts()
-  }
+  // const pagingChange = (page: number) => {
+  //   searchParams.page = page
+  //   getPosts()
+  // }
 
   useEffect(() => {
     init()
-  }, [])
+  });
   
   return (
     <div data-component="post">

@@ -1,5 +1,5 @@
 export {
   avatarDefaultImage,
-  useImage
+  getImage
 } from './image'
-export { useSvg } from './svg'
+export { getSvg } from './svg'

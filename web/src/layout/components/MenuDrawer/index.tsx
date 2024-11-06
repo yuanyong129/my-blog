@@ -1,11 +1,11 @@
 import { FC, useState, useEffect, CSSProperties } from 'react'
 import { NavLink } from 'react-router-dom'
 import PubSub from 'pubsub-js'
-import { useOptions } from '@/common'
+import { getOptions } from '@/common'
 import { PUBSUB } from '@/utils'
 import './index.scss'
 
-const { navOptions }  = useOptions()
+const { navOptions }  = getOptions();
 
 let pubsubToken: string
 
@@ -32,7 +32,7 @@ export default (() => {
   }
 
   useEffect(() => {
-    pubsubToken = PubSub.subscribe(PUBSUB.OPENDRAWER, (msg, data) => {
+    pubsubToken = PubSub.subscribe(PUBSUB.OPENDRAWER, (_: string, data: boolean) => {
       showDrawer(data)
     })
     return () => {

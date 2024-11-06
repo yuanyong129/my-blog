@@ -1,4 +1,4 @@
-import { FC, CSSProperties } from 'react'
+import { FC, CSSProperties, ReactNode } from 'react'
 
 const title_style: CSSProperties = {
   color: 'white',
@@ -17,6 +17,7 @@ const content_style: CSSProperties = {
 
 interface PropsType {
   title: string
+  children: ReactNode
 } 
 
 export default (({

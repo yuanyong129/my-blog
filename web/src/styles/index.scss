@@ -1,7 +1,7 @@
 /* 全局样式 */
-@import './root.scss';
-@import './fluent.design.scss';
-@import './responsive.scss';
+@use './root.scss';
+@use './fluent.design.scss';
+@use './responsive.scss';
 
 @font-face {
   font-family: 'PPT';

@@ -1,4 +1,4 @@
-import axios, { AxiosResponse, AxiosRequestConfig } from 'axios'
+import axios, { AxiosResponse, AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
 import { url } from '@/config'
 
 export const http = axios.create({
@@ -6,13 +6,13 @@ export const http = axios.create({
   timeout: 3000
 })
 
-type MyResponseType<T = any> = {
+type MyResponseType<T = unknown> = {
   code: number
   message: string
   data: T
 }
 
-const request = async<T = any> (config: AxiosRequestConfig): Promise<MyResponseType<T>> => {
+const request = async<T = unknown> (config: AxiosRequestConfig): Promise<MyResponseType<T>> => {
   try {
     const { data } = await http.request<MyResponseType<T>>(config)
     return data
@@ -24,7 +24,7 @@ const request = async<T = any> (config: AxiosRequestConfig): Promise<MyResponseT
 
 // 请求拦截器
 http.interceptors.request.use(
-  (req: AxiosRequestConfig) => {
+  (req: InternalAxiosRequestConfig<any>) => {
     // if (req.url) {
     //   if(req.url.indexOf('login') < 0 && req.url.indexOf('register') < 0) {
     //     // req.headers['Authorization'] = `Bearer ${getToken()}`
@@ -47,9 +47,9 @@ http.interceptors.response.use(
     }
   }   ,
   (err: any) => {
-    const { message } = err.response.data
+    // const { message } = err.response.data
     // Message.error(message)
-    // console.log(message)
+    console.log(err)
   }
 )
 

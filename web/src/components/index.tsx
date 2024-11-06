@@ -1,12 +1,12 @@
-import Avatar from './Avatar'
-import CommonPage from './CommonPage'
-import Trigger from './Trigger'
-import Tag from './Tag'
-import Loading from './Loading'
-import MenuItem from './MenuItem'
-import Background from './Background'
+import Avatar from './Avatar';
+import CommonPage from './CommonPage';
+import Trigger from './Trigger';
+import Tag from './Tag';
+import Loading from './Loading';
+import MenuItem from './MenuItem';
+import Background from './Background';
 
-export const useGlobalComponents = () => ({
+export const getGlobalComponents = () => ({
   Avatar,
   CommonPage,
   Trigger,
@@ -14,4 +14,4 @@ export const useGlobalComponents = () => ({
   Loading,
   MenuItem,
   Background
-})
+});

@@ -6,7 +6,7 @@ const navOptions :INavOptions[] = [
     en: 'Home'
   },
   {
-    href: '/blog',
+    href: '/post',
     children: '我的博客',
     en: 'My Blog'
   },
@@ -15,11 +15,11 @@ const navOptions :INavOptions[] = [
     children: '我的小说',
     en: 'My Novel'
   },
-  {
-    href: '/origami',
-    children: '我的折纸',
-    en: 'My Origami'
-  },
+  // {
+  //   href: '/origami',
+  //   children: '我的折纸',
+  //   en: 'My Origami'
+  // },
   {
     href: '/about',
     children: '关于',
@@ -28,12 +28,12 @@ const navOptions :INavOptions[] = [
 
 ]
 
-const useOptions = () => {
+const getOptions = () => {
   return {
     navOptions
   }
 }
 
 export {
-  useOptions
+  getOptions
 }

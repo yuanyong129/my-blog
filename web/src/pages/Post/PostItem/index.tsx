@@ -1,9 +1,9 @@
 import { FC } from 'react'
 import dayjs from 'dayjs'
-import { useGlobalComponents } from '@/components'
+import { getGlobalComponents } from '@/components'
 import './index.scss'
 
-const { Tag } = useGlobalComponents()
+const { Tag } = getGlobalComponents()
 interface PropsType {
   title: string
   tags: any[]

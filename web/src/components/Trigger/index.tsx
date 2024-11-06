@@ -7,12 +7,13 @@ interface IProps {
   margin: string
 }
 
+let pubSubToken: any = null
+
 export default (({
   margin
 }) => {
   const [collapsed, setCollapsed] = useState<boolean>(true)
-  let pubSubToken: any = null
-
+  
   const onTrigger = () => {
     PubSub.publish(PUBSUB.OPENDRAWER, !collapsed)
     setCollapsed(!collapsed)

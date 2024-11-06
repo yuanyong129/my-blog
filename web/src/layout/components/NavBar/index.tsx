@@ -1,12 +1,12 @@
 import { FC, CSSProperties, ReactNode } from 'react'
 import { Link as RouterLink } from 'react-router-dom'
-import { useSvg } from '@/assets'
-import { useGlobalComponents } from '@/components'
-import { useOptions } from '@/common'
+import { getSvg } from '@/assets'
+import { getGlobalComponents } from '@/components'
+import { getOptions } from '@/common'
 import './index.scss'
 
-const { Trigger } = useGlobalComponents()
-const { navOptions } = useOptions()
+const { Trigger } = getGlobalComponents()
+const { navOptions } = getOptions()
 
 export default (() => {
   return (
@@ -25,6 +25,7 @@ export default (() => {
 
 
 // logo组件
+// eslint-disable-next-line react-refresh/only-export-components
 const Logo: FC = () => {
   
   const logo_style: CSSProperties = {
@@ -51,11 +52,12 @@ interface ILinkProps {
   children: ReactNode
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 const Link: FC<ILinkProps> =  ({
   to,
   children
 }) => {
-  const { LinkCircleSvg } = useSvg()
+  const { LinkCircleSvg } = getSvg()
   return (
     <RouterLink style={{ display: 'block', height: '100%' }} to={to}>
       <div className='my-link'>
